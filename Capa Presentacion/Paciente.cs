@@ -305,6 +305,7 @@ namespace Capa_Presentacion
             cbxMedico.DisplayMember = "Descripcion"; // Mostrar nombre y especialidad
             cbxMedico.ValueMember = "IdMedico"; // Asociar el ID del médico
             cbxMedico.SelectedIndex = 1;
+            //no se como solucionar es to
         }
 
         private void cbxMedico_SelectedIndexChanged(object sender, EventArgs e)

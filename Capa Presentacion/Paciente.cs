@@ -17,8 +17,10 @@ namespace Capa_Presentacion
     public partial class Paciente : UserControl
     {
         int id_Paciente;
+        int id_Medico;
 
         private List<Capa_Dominio.Paciente> lista;
+        private List<Medico> lista2;
         public Paciente()
         {
             InitializeComponent();
@@ -60,6 +62,8 @@ namespace Capa_Presentacion
             PanelTurno.Visible= false;  
             DiseñoDgv(ref dgvPaciente);
             CargarDatos();
+            maskedTextBox1.Mask = "00:00";  // Formato HH:mm
+            maskedTextBox1.ValidatingType = typeof(DateTime);
         }
 
 
@@ -163,8 +167,6 @@ namespace Capa_Presentacion
                 DataGridViewRow row = dgvPaciente.Rows[e.RowIndex];
                 id_Paciente= Convert.ToInt32(row.Cells["IdPaciente"].Value);
             }
-
-
             
         }
 
@@ -266,7 +268,8 @@ namespace Capa_Presentacion
         {
             if (id_Paciente > 0)
             {
-                PanelTurno.Visible = true;       
+                PanelTurno.Visible = true;
+                PanelTurno.Dock = DockStyle.Fill;
             }
             else
             {
@@ -277,42 +280,123 @@ namespace Capa_Presentacion
 
         private void PanelTurno_Paint(object sender, PaintEventArgs e)
         {
-            CargarMedicosEnComboBox();
-            
-
+            ListarMedico();
         }
 
-        private void CargarMedicosEnComboBox()
-        {
-            MedicoNegocio negocio = new MedicoNegocio();
-            List<Medico> Medicos = negocio.listar();
 
-            if (Medicos == null || Medicos.Count == 0)
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if (DateTime.TryParseExact(maskedTextBox1.Text, "HH:mm", null, System.Globalization.DateTimeStyles.None, out DateTime horaValida))
             {
-                MessageBox.Show("No se encontraron médicos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                MessageBox.Show("Hora válida: " + horaValida.ToString("HH:mm"));
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingresa una hora válida en el formato HH:mm.");
             }
 
-            // Crear una lista transformada con nombre y especialidad
-            var medicosTransformados = Medicos.Select(m => new
-            {
-                IdMedico = m.IdMedico,
-                Descripcion = $"{m.Nombre} {m.Apellido} - Especialidad: {m.Especialidad}"
-            }).ToList();
-
-            // Asignar la lista transformada al ComboBox
-            cbxMedico.DataSource = medicosTransformados;
-            cbxMedico.DisplayMember = "Descripcion"; // Mostrar nombre y especialidad
-            cbxMedico.ValueMember = "IdMedico"; // Asociar el ID del médico
-            cbxMedico.SelectedIndex = 1;
-            //no se como solucionar es to
         }
 
-        private void cbxMedico_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListarMedico()
         {
+            try
+            {
+                lista2 = new MedicoNegocio().listar();
+                dgvMed.DataSource = lista2;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void dgvMed_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Verificar que la fila seleccionada es válida
+                if (e.RowIndex >= 0)
+                {
+                    // Obtener la fila seleccionada
+                    DataGridViewRow filaSeleccionada = dgvMed.Rows[e.RowIndex];
+
+                    // Suponiendo que la columna "IdMedico" existe en tu DataGridView
+                    id_Medico = Convert.ToInt32(filaSeleccionada.Cells["IdMedico"].Value);
+
+                    //MessageBox.Show("ID Médico seleccionado: " + idMedico.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar médico: " + ex.Message);
+            }
 
         }
-    }
+
+        private void btnGuardarTurno_Click(object sender, EventArgs e)
+        {
+            GuardarTurno();
+        }
+
+        private void GuardarTurno()
+        {
+            TurnoNegocio negocio = new TurnoNegocio();
+            Turno seleccionado = new Turno();
+            try
+            {
+                // Convertir el texto del MaskedTextBox a TimeSpan
+                if (TimeSpan.TryParse(maskedTextBox1.Text, out TimeSpan horaSeleccionada))
+                {
+                    seleccionado.Hora = horaSeleccionada; // Asignar el TimeSpan al objeto Turno
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingresa una hora válida en formato HH:mm.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Continuar con la asignación de otros valores...
+                seleccionado.MedicoId = id_Medico;
+                seleccionado.PacienteId = id_Paciente;
+
+                if (!DateTime.TryParse(dtpFecha.Text, out DateTime fechaSeleccionada))
+                {
+                    MessageBox.Show("Por favor, ingresa una fecha válida.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                seleccionado.Fecha = fechaSeleccionada;
+
+                if (string.IsNullOrWhiteSpace(tbxConsulta.Text))
+                {
+                    MessageBox.Show("El motivo de consulta no puede estar vacío.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                seleccionado.MotivoConsulta = tbxConsulta.Text.Trim();
+
+                if (cbxEstado.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Por favor, selecciona un estado para el turno.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                seleccionado.EstadoTurno = cbxEstado.SelectedItem.ToString();
+
+                // Guardar el turno
+                negocio.Agregar(seleccionado);
+
+                // Confirmación
+                MessageBox.Show("El turno se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar el turno: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
 
     }
+
+}
 

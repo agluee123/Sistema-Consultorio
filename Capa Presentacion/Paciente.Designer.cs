@@ -31,13 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Paciente));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTurno = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tbxBuscar = new System.Windows.Forms.TextBox();
-            this.dgvPaciente = new System.Windows.Forms.DataGridView();
-            this.EditarP = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelRegistro = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -67,29 +60,37 @@
             this.lblCondicion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tbxBuscar = new System.Windows.Forms.TextBox();
+            this.dgvPaciente = new System.Windows.Forms.DataGridView();
+            this.EditarP = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PanelTurno = new System.Windows.Forms.Panel();
+            this.dgvMed = new System.Windows.Forms.DataGridView();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbxMedico = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardarTurno = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbxConsulta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).BeginInit();
             this.PanelRegistro.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).BeginInit();
             this.PanelTurno.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +98,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.btnTurno);
+            this.panel1.Controls.Add(this.PanelRegistro);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
@@ -123,93 +125,6 @@
             this.btnTurno.TabIndex = 4;
             this.btnTurno.UseVisualStyleBackColor = false;
             this.btnTurno.Click += new System.EventHandler(this.btnTurno_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackColor = System.Drawing.Color.Black;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAgregar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(712, 0);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(108, 79);
-            this.btnAgregar.TabIndex = 3;
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(430, 44);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 29);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel3.Location = new System.Drawing.Point(85, 69);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(339, 3);
-            this.panel3.TabIndex = 1;
-            // 
-            // tbxBuscar
-            // 
-            this.tbxBuscar.BackColor = System.Drawing.Color.Black;
-            this.tbxBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxBuscar.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbxBuscar.Location = new System.Drawing.Point(85, 44);
-            this.tbxBuscar.Name = "tbxBuscar";
-            this.tbxBuscar.Size = new System.Drawing.Size(339, 19);
-            this.tbxBuscar.TabIndex = 0;
-            // 
-            // dgvPaciente
-            // 
-            this.dgvPaciente.AllowUserToAddRows = false;
-            this.dgvPaciente.AllowUserToDeleteRows = false;
-            this.dgvPaciente.AllowUserToResizeRows = false;
-            this.dgvPaciente.BackgroundColor = System.Drawing.Color.Black;
-            this.dgvPaciente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaciente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EditarP,
-            this.Eliminar});
-            this.dgvPaciente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPaciente.GridColor = System.Drawing.Color.Black;
-            this.dgvPaciente.Location = new System.Drawing.Point(0, 79);
-            this.dgvPaciente.Name = "dgvPaciente";
-            this.dgvPaciente.ReadOnly = true;
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.dgvPaciente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPaciente.Size = new System.Drawing.Size(820, 616);
-            this.dgvPaciente.TabIndex = 1;
-            this.dgvPaciente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaciente_CellClick);
-            // 
-            // EditarP
-            // 
-            this.EditarP.HeaderText = "";
-            this.EditarP.Image = ((System.Drawing.Image)(resources.GetObject("EditarP.Image")));
-            this.EditarP.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.EditarP.Name = "EditarP";
-            this.EditarP.ReadOnly = true;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
-            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
             // 
             // PanelRegistro
             // 
@@ -241,7 +156,7 @@
             this.PanelRegistro.Controls.Add(this.label1);
             this.PanelRegistro.Controls.Add(this.lblApellido);
             this.PanelRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanelRegistro.Location = new System.Drawing.Point(30, 101);
+            this.PanelRegistro.Location = new System.Drawing.Point(37, 72);
             this.PanelRegistro.Name = "PanelRegistro";
             this.PanelRegistro.Size = new System.Drawing.Size(739, 512);
             this.PanelRegistro.TabIndex = 3;
@@ -538,6 +453,93 @@
             this.lblApellido.TabIndex = 0;
             this.lblApellido.Text = "Apellido:";
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.Black;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAgregar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.Location = new System.Drawing.Point(712, 0);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(108, 79);
+            this.btnAgregar.TabIndex = 3;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(430, 44);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
+            this.panel3.Location = new System.Drawing.Point(85, 69);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(339, 3);
+            this.panel3.TabIndex = 1;
+            // 
+            // tbxBuscar
+            // 
+            this.tbxBuscar.BackColor = System.Drawing.Color.Black;
+            this.tbxBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxBuscar.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbxBuscar.Location = new System.Drawing.Point(85, 44);
+            this.tbxBuscar.Name = "tbxBuscar";
+            this.tbxBuscar.Size = new System.Drawing.Size(339, 19);
+            this.tbxBuscar.TabIndex = 0;
+            // 
+            // dgvPaciente
+            // 
+            this.dgvPaciente.AllowUserToAddRows = false;
+            this.dgvPaciente.AllowUserToDeleteRows = false;
+            this.dgvPaciente.AllowUserToResizeRows = false;
+            this.dgvPaciente.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvPaciente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPaciente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EditarP,
+            this.Eliminar});
+            this.dgvPaciente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPaciente.GridColor = System.Drawing.Color.Black;
+            this.dgvPaciente.Location = new System.Drawing.Point(0, 79);
+            this.dgvPaciente.Name = "dgvPaciente";
+            this.dgvPaciente.ReadOnly = true;
+            this.dgvPaciente.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
+            this.dgvPaciente.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.dgvPaciente.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.dgvPaciente.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.dgvPaciente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPaciente.Size = new System.Drawing.Size(820, 616);
+            this.dgvPaciente.TabIndex = 1;
+            this.dgvPaciente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaciente_CellClick);
+            // 
+            // EditarP
+            // 
+            this.EditarP.HeaderText = "";
+            this.EditarP.Image = ((System.Drawing.Image)(resources.GetObject("EditarP.Image")));
+            this.EditarP.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.EditarP.Name = "EditarP";
+            this.EditarP.ReadOnly = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Eliminar.Image")));
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
@@ -550,72 +552,82 @@
             // PanelTurno
             // 
             this.PanelTurno.BackColor = System.Drawing.Color.Black;
+            this.PanelTurno.Controls.Add(this.dgvMed);
+            this.PanelTurno.Controls.Add(this.maskedTextBox1);
             this.PanelTurno.Controls.Add(this.label2);
-            this.PanelTurno.Controls.Add(this.cbxMedico);
             this.PanelTurno.Controls.Add(this.flowLayoutPanel2);
             this.PanelTurno.Controls.Add(this.cbxEstado);
-            this.PanelTurno.Controls.Add(this.dateTimePicker1);
+            this.PanelTurno.Controls.Add(this.dtpFecha);
             this.PanelTurno.Controls.Add(this.panel13);
             this.PanelTurno.Controls.Add(this.panel14);
-            this.PanelTurno.Controls.Add(this.textBox2);
-            this.PanelTurno.Controls.Add(this.textBox3);
+            this.PanelTurno.Controls.Add(this.tbxConsulta);
             this.PanelTurno.Controls.Add(this.label3);
             this.PanelTurno.Controls.Add(this.label5);
             this.PanelTurno.Controls.Add(this.label6);
             this.PanelTurno.Controls.Add(this.label7);
             this.PanelTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanelTurno.Location = new System.Drawing.Point(41, 130);
+            this.PanelTurno.Location = new System.Drawing.Point(40, 129);
             this.PanelTurno.Name = "PanelTurno";
             this.PanelTurno.Size = new System.Drawing.Size(739, 512);
             this.PanelTurno.TabIndex = 4;
             this.PanelTurno.Visible = false;
             this.PanelTurno.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelTurno_Paint);
             // 
+            // dgvMed
+            // 
+            this.dgvMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMed.Location = new System.Drawing.Point(222, 56);
+            this.dgvMed.Name = "dgvMed";
+            this.dgvMed.ReadOnly = true;
+            this.dgvMed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMed.Size = new System.Drawing.Size(502, 70);
+            this.dgvMed.TabIndex = 17;
+            this.dgvMed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMed_CellClick);
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(223, 192);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(340, 26);
+            this.maskedTextBox1.TabIndex = 16;
+            this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(44, 56);
+            this.label2.Location = new System.Drawing.Point(55, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(159, 20);
             this.label2.TabIndex = 15;
             this.label2.Text = "Seleccion de Medico:";
             // 
-            // cbxMedico
-            // 
-            this.cbxMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxMedico.FormattingEnabled = true;
-            this.cbxMedico.Location = new System.Drawing.Point(222, 51);
-            this.cbxMedico.Name = "cbxMedico";
-            this.cbxMedico.Size = new System.Drawing.Size(342, 28);
-            this.cbxMedico.TabIndex = 14;
-            this.cbxMedico.SelectedIndexChanged += new System.EventHandler(this.cbxMedico_SelectedIndexChanged);
-            // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.button1);
+            this.flowLayoutPanel2.Controls.Add(this.btnGuardarTurno);
             this.flowLayoutPanel2.Controls.Add(this.button2);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(222, 381);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(339, 79);
             this.flowLayoutPanel2.TabIndex = 13;
             // 
-            // button1
+            // btnGuardarTurno
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 76);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnGuardarTurno.BackColor = System.Drawing.Color.Black;
+            this.btnGuardarTurno.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGuardarTurno.FlatAppearance.BorderSize = 0;
+            this.btnGuardarTurno.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGuardarTurno.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnGuardarTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarTurno.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarTurno.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarTurno.Image")));
+            this.btnGuardarTurno.Location = new System.Drawing.Point(3, 3);
+            this.btnGuardarTurno.Name = "btnGuardarTurno";
+            this.btnGuardarTurno.Size = new System.Drawing.Size(99, 76);
+            this.btnGuardarTurno.TabIndex = 0;
+            this.btnGuardarTurno.UseVisualStyleBackColor = false;
+            this.btnGuardarTurno.Click += new System.EventHandler(this.btnGuardarTurno_Click);
             // 
             // button2
             // 
@@ -638,27 +650,25 @@
             // 
             this.cbxEstado.FormattingEnabled = true;
             this.cbxEstado.Items.AddRange(new object[] {
-            "Femenino",
-            "Masculino",
-            "Otro"});
-            this.cbxEstado.Location = new System.Drawing.Point(219, 231);
+            "Pendiente"});
+            this.cbxEstado.Location = new System.Drawing.Point(219, 280);
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(339, 28);
             this.cbxEstado.TabIndex = 12;
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.White;
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.Black;
-            this.dateTimePicker1.Location = new System.Drawing.Point(222, 101);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(339, 26);
-            this.dateTimePicker1.TabIndex = 11;
+            this.dtpFecha.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.Black;
+            this.dtpFecha.Location = new System.Drawing.Point(222, 150);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(339, 26);
+            this.dtpFecha.TabIndex = 11;
             // 
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel13.Location = new System.Drawing.Point(222, 205);
+            this.panel13.Location = new System.Drawing.Point(222, 258);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(339, 1);
             this.panel13.TabIndex = 10;
@@ -666,38 +676,27 @@
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel14.Location = new System.Drawing.Point(224, 165);
+            this.panel14.Location = new System.Drawing.Point(223, 223);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(339, 1);
             this.panel14.TabIndex = 10;
             // 
-            // textBox2
+            // tbxConsulta
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Black;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox2.Location = new System.Drawing.Point(222, 185);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(339, 19);
-            this.textBox2.TabIndex = 9;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.Black;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Location = new System.Drawing.Point(224, 140);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(339, 19);
-            this.textBox3.TabIndex = 9;
+            this.tbxConsulta.BackColor = System.Drawing.Color.Black;
+            this.tbxConsulta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxConsulta.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbxConsulta.Location = new System.Drawing.Point(222, 233);
+            this.tbxConsulta.Name = "tbxConsulta";
+            this.tbxConsulta.Size = new System.Drawing.Size(339, 19);
+            this.tbxConsulta.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(161, 141);
+            this.label3.Location = new System.Drawing.Point(159, 195);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 20);
             this.label3.TabIndex = 7;
@@ -707,7 +706,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(59, 188);
+            this.label5.Location = new System.Drawing.Point(59, 237);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 20);
             this.label5.TabIndex = 5;
@@ -717,7 +716,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(140, 237);
+            this.label6.Location = new System.Drawing.Point(140, 286);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 20);
             this.label6.TabIndex = 4;
@@ -727,7 +726,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(153, 101);
+            this.label7.Location = new System.Drawing.Point(153, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 20);
             this.label7.TabIndex = 3;
@@ -737,7 +736,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.PanelRegistro);
             this.Controls.Add(this.PanelTurno);
             this.Controls.Add(this.dgvPaciente);
             this.Controls.Add(this.panel2);
@@ -747,13 +745,14 @@
             this.Load += new System.EventHandler(this.Paciente_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).EndInit();
             this.PanelRegistro.ResumeLayout(false);
             this.PanelRegistro.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).EndInit();
             this.PanelTurno.ResumeLayout(false);
             this.PanelTurno.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -802,19 +801,19 @@
         private System.Windows.Forms.Button btnTurno;
         private System.Windows.Forms.Panel PanelTurno;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbxMedico;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuardarTurno;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cbxEstado;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbxConsulta;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.DataGridView dgvMed;
     }
 }

@@ -43,5 +43,14 @@ namespace Capa_Presentacion
             panelPadre.Controls.Add(control);
 
         }
+
+        private void btnTurno_Click(object sender, EventArgs e)
+        {
+            panelPadre.Controls.Clear();
+            VistaTurno control = new VistaTurno();
+            control.Dock = DockStyle.Fill;
+            panelPadre.Controls.Add(control);
+
+        }
     }
 }

@@ -72,7 +72,7 @@ namespace Capa_Negocio
             Acceso_a_datos datos = new Acceso_a_datos();
             try
             {
-                datos.setearConsulta("UPDATE Medico SET Nombre = @Nombre, Apellido = @Apellido, Especialidad = @Especialidad, Matricula = @Matricula");
+                datos.setearConsulta("UPDATE Medico SET Nombre = @Nombre, Apellido = @Apellido, Especialidad = @Especialidad, Matricula = @Matricula WHERE IdMedico = @IdMedico");
 
                 datos.setearParametro("@IdMedico", modificar.IdMedico);
                 datos.setearParametro("@nombre", modificar.Nombre);

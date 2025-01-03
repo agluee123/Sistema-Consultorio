@@ -66,6 +66,12 @@
     <Compile Include="VistaMedico.Designer.cs">
       <DependentUpon>VistaMedico.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaTurno.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VistaTurno.Designer.cs">
+      <DependentUpon>VistaTurno.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Menu Principal.resx">
       <DependentUpon>Menu Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +90,9 @@
     </Compile>
     <EmbeddedResource Include="VistaMedico.resx">
       <DependentUpon>VistaMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaTurno.resx">
+      <DependentUpon>VistaTurno.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

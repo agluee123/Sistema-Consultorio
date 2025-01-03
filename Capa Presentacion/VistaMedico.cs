@@ -189,7 +189,7 @@ namespace Capa_Presentacion
             {
                 MedicoNegocio negocio = new MedicoNegocio();
                 Medico seleccionado =(Medico)dgvMedico.CurrentRow.DataBoundItem;
-
+        
                 seleccionado.Nombre = tbxNombre.Text;
                 seleccionado.Apellido = tbxApellido.Text;
                 seleccionado.Matricula = tbxMatricula.Text;

@@ -93,6 +93,7 @@
             this.btnTurno.Text = "Turnos";
             this.btnTurno.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTurno.UseVisualStyleBackColor = false;
+            this.btnTurno.Click += new System.EventHandler(this.btnTurno_Click);
             // 
             // btnMedico
             // 

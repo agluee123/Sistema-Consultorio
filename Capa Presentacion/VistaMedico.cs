@@ -77,12 +77,27 @@ namespace Capa_Presentacion
 
         private void CargarDatos()
         {
-
             try
             {
-                lista = new MedicoNegocio().listar();
-                dgvMedico.DataSource = lista;
+                MedicoNegocio negocioMedico = new MedicoNegocio();
+                DisponibilidadNegocio negocioDisponibilidad = new DisponibilidadNegocio();
 
+                List<Medico> listaMedicos = negocioMedico.listar();
+                List<Disponibilidad> listaDisponibilidad = negocioDisponibilidad.listarDisponibilidad();
+
+                var listaCombinada = listaMedicos.Select(m => new
+                {
+                    m.IdMedico,
+                    m.Nombre,
+                    m.Apellido,
+                    m.Especialidad,
+                    m.Matricula,
+                    Disponibilidad = string.Join(", ", listaDisponibilidad
+                        .Where(d => d.MedicoId == m.IdMedico)
+                        .Select(d => d.DiaSemana))
+                }).ToList();
+
+                dgvMedico.DataSource = listaCombinada;
             }
             catch (Exception ex)
             {

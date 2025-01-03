@@ -28,6 +28,7 @@ namespace Capa_Presentacion
                 lista = new TurnoNegocio().listar();
                 dgvTurno.DataSource = lista;
 
+
             }
             catch (Exception ex)
             {

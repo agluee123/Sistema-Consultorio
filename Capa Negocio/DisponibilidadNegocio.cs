@@ -32,5 +32,37 @@ namespace Capa_Negocio
             }
         }
 
+        public List<Disponibilidad> listarDisponibilidad()
+        {
+            List<Disponibilidad> lista = new List<Disponibilidad>();
+            Acceso_a_datos datos = new Acceso_a_datos();
+
+            try
+            {
+                datos.setearConsulta("SELECT * FROM Disponibilidad");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Disponibilidad disp = new Disponibilidad
+                    {
+                        MedicoId = (int)datos.Lector["MedicoId"],
+                        DiaSemana = datos.Lector["DiaSemana"].ToString()
+                    };
+                    lista.Add(disp);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar disponibilidad: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

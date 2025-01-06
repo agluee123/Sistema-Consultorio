@@ -105,6 +105,7 @@ namespace Capa_Presentacion
             }
         }
 
+
         public static void DiseñoDgv(ref DataGridView dgv)
         {
             // General
@@ -127,54 +128,53 @@ namespace Capa_Presentacion
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // Alineación al centro
         }
 
+        
         private void dgvMedico_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (e.RowIndex >= 0 && e.ColumnIndex == dgvMedico.Columns["EditarP"].Index)
             {
                 ObtenerMedicoEditar(e.RowIndex);
-
+                DiasMedico();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == dgvMedico.Columns["Eliminar"].Index)
             {
-                // Mostrar un mensaje de confirmación
+
                 var confirmResult = MessageBox.Show(
-                    "¿Estás seguro de que deseas eliminar este Medico?",
+                    "¿Estás seguro de que deseas eliminar este médico?",
                     "Confirmación de Eliminación",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 );
 
-                // Verificar si el usuario seleccionó "Sí"
+
                 if (confirmResult == DialogResult.Yes)
                 {
-                    MedicoEliminar(e.RowIndex);
-
                     try
                     {
+
+                        int id_medico = Convert.ToInt32(dgvMedico.Rows[e.RowIndex].Cells["IdMedico"].Value);
+
+                        DisponibilidadNegocio negocioDis = new DisponibilidadNegocio();
+                        negocioDis.EliminarDisponibilidadMedico(id_medico);
+
+
                         MedicoNegocio negocio = new MedicoNegocio();
-                        Medico seleccionado = (Medico)dgvMedico.CurrentRow.DataBoundItem;
+                        negocio.Eliminar(new Medico { IdMedico = id_medico });
 
-                        seleccionado.Nombre = tbxNombre.Text;
-                        seleccionado.Apellido = tbxApellido.Text;
-                        seleccionado.Matricula = tbxMatricula.Text;
-                        seleccionado.Especialidad = tbxEspecialidad.Text;
-                        
 
-                        negocio.Eliminar(seleccionado);
+                        MessageBox.Show("Médico eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Mostrar mensaje de éxito
-                        MessageBox.Show("Medico eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         CargarDatos();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error al eliminar el Medico: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al eliminar el médico: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
 
         private void ObtenerMedicoEditar(int rowIndex)
         {
@@ -185,6 +185,7 @@ namespace Capa_Presentacion
                 tbxApellido.Text = dgvMedico.Rows[rowIndex].Cells[4].Value?.ToString() ?? string.Empty;
                 tbxEspecialidad.Text = dgvMedico.Rows[rowIndex].Cells[5].Value?.ToString() ?? string.Empty;
                 tbxMatricula.Text = dgvMedico.Rows[rowIndex].Cells[6].Value?.ToString() ?? string.Empty;
+
                 PanelRegistro.Visible = true;
                 PanelRegistro.Dock = DockStyle.Fill;
                 btnGuardar.Visible = false;
@@ -204,12 +205,14 @@ namespace Capa_Presentacion
             {
                 MedicoNegocio negocio = new MedicoNegocio();
                 Medico seleccionado =(Medico)dgvMedico.CurrentRow.DataBoundItem;
+                DisponibilidadNegocio disponibilidad=new DisponibilidadNegocio();
+                Disponibilidad Seleccionado=(Disponibilidad)dgvMedico.CurrentRow.DataBoundItem;
         
                 seleccionado.Nombre = tbxNombre.Text;
                 seleccionado.Apellido = tbxApellido.Text;
                 seleccionado.Matricula = tbxMatricula.Text;
-                seleccionado.Especialidad = tbxEspecialidad.Text;   
-
+                seleccionado.Especialidad = tbxEspecialidad.Text;
+                
                 negocio.Modificar(seleccionado);
 
                 MessageBox.Show("Medico modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -222,15 +225,6 @@ namespace Capa_Presentacion
             }
         }
 
-        private void MedicoEliminar(int rowIndex)
-        {
-            id_medico = Convert.ToInt32(dgvMedico.Rows[rowIndex].Cells[2].Value);
-            tbxNombre.Text = dgvMedico.Rows[rowIndex].Cells[3].Value?.ToString() ?? string.Empty;
-            tbxApellido.Text = dgvMedico.Rows[rowIndex].Cells[4].Value?.ToString() ?? string.Empty;
-            tbxEspecialidad.Text = dgvMedico.Rows[rowIndex].Cells[5].Value?.ToString() ?? string.Empty;
-            tbxMatricula.Text = dgvMedico.Rows[rowIndex].Cells[6].Value?.ToString() ?? string.Empty;
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -284,11 +278,37 @@ namespace Capa_Presentacion
             if (ChDomingo.Checked) diasDisponibles.Add("Domingo");
 
             return diasDisponibles;
+        
         }
 
-        private void PanelRegistro_Paint(object sender, PaintEventArgs e)
-        {
+        
+      
+         private void DiasMedico()
+         {
+            DisponibilidadNegocio negocio = new DisponibilidadNegocio();
+            int id = id_medico;
+            List<string> diasDisponibles = negocio.ObtenerDiasPorMedico(id);
 
-        }
+
+            string diasMensaje = "Días disponibles para el médico:\n" + string.Join(", ", diasDisponibles);
+            MessageBox.Show(diasMensaje, "Debug: DiasMedico");
+
+
+            foreach (string dia in diasDisponibles)
+            {
+                Console.WriteLine(dia);
+            }
+
+            // Marcar los CheckBox según los días disponibles
+            if (diasDisponibles.Contains("Lunes")) chLunes.Checked = true;
+            if (diasDisponibles.Contains("Martes")) chMartes.Checked = true;
+            if (diasDisponibles.Contains("Miércoles")) ChMiercoles.Checked = true;
+            if (diasDisponibles.Contains("Jueves")) ChJueves.Checked = true;
+            if (diasDisponibles.Contains("Viernes")) ChViernes.Checked = true;
+            if (diasDisponibles.Contains("Sábado")) ChSabado.Checked = true;
+            if (diasDisponibles.Contains("Domingo")) ChDomingo.Checked = true;
+          }
+
+
     }
 }

@@ -16,6 +16,7 @@ namespace Capa_Presentacion
 {
     public partial class Paciente : UserControl
     {
+        private BindingSource bindingSource = new BindingSource();
         int id_Paciente;
         int id_Medico;
 
@@ -296,13 +297,19 @@ namespace Capa_Presentacion
             }
 
         }
-
+            
         private void ListarMedico()
         {
+
+        
             try
             {
-                lista2 = new MedicoNegocio().listar();
-                dgvMed.DataSource = lista2;
+
+
+                var listaMedicos = new MedicoNegocio().listar();
+                bindingSource.DataSource = listaMedicos;
+                dgvMed.DataSource = bindingSource;
+
 
             }
             catch (Exception ex)
@@ -310,6 +317,7 @@ namespace Capa_Presentacion
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void dgvMed_CellClick(object sender, DataGridViewCellEventArgs e)
         {

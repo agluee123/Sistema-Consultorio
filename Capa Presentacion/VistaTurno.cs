@@ -25,10 +25,29 @@ namespace Capa_Presentacion
 
             try
             {
-                lista = new TurnoNegocio().listar();
-                dgvTurno.DataSource = lista;
+               TurnoNegocio turno=new TurnoNegocio();
+               MedicoNegocio medico=new MedicoNegocio();
+               PacienteNegocio paciente=new PacienteNegocio();
+
+                List<Turno> turnos = turno.listar();
+                List<Medico> ListaMedico = medico.listar();
+                List<Capa_Dominio.Paciente> ListaPaciente = paciente.listar();
+
+                var listaCombinada = turnos.Select(t => new
+                {
+                    t.IdTurno,
+                    t.EstadoTurno,
+                    t.Hora,
+                    Fecha = t.Fecha.ToString("yyyy-MM-dd"),
+                    Medico = ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Nombre + " " +
+                    ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Apellido + " " +
+                    ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Especialidad ?? "Sin médico",
+                    Paciente = ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Nombre + " " +
+                       ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Apellido ?? "Sin paciente"
+                }).ToList();
 
 
+                dgvTurno.DataSource = listaCombinada;
             }
             catch (Exception ex)
             {

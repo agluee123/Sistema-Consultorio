@@ -39,7 +39,6 @@
             this.dgvTurno = new System.Windows.Forms.DataGridView();
             this.EditarP = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.PanelRegistro = new System.Windows.Forms.Panel();
             this.ChSabado = new System.Windows.Forms.CheckBox();
             this.ChDomingo = new System.Windows.Forms.CheckBox();
@@ -52,7 +51,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -185,15 +183,6 @@
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 695);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(820, 77);
-            this.panel2.TabIndex = 6;
-            // 
             // PanelRegistro
             // 
             this.PanelRegistro.BackColor = System.Drawing.Color.Black;
@@ -317,7 +306,6 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnGuardar);
             this.flowLayoutPanel1.Controls.Add(this.btnEditar);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(222, 384);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(339, 79);
@@ -356,23 +344,6 @@
             this.btnEditar.Size = new System.Drawing.Size(99, 76);
             this.btnEditar.TabIndex = 1;
             this.btnEditar.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(213, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 76);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // panel8
             // 
@@ -495,7 +466,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PanelRegistro);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgvTurno);
             this.Controls.Add(this.panel1);
             this.Name = "VistaTurno";
@@ -524,7 +494,6 @@
         private System.Windows.Forms.DataGridView dgvTurno;
         private System.Windows.Forms.DataGridViewImageColumn EditarP;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel PanelRegistro;
         private System.Windows.Forms.CheckBox ChSabado;
         private System.Windows.Forms.CheckBox ChDomingo;
@@ -537,7 +506,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;

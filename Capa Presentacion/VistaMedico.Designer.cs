@@ -210,7 +210,6 @@
             this.PanelRegistro.Size = new System.Drawing.Size(739, 512);
             this.PanelRegistro.TabIndex = 5;
             this.PanelRegistro.Visible = false;
-            this.PanelRegistro.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelRegistro_Paint);
             // 
             // ChSabado
             // 

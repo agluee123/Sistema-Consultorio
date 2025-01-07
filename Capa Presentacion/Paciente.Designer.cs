@@ -64,7 +64,7 @@
             this.lblCondicion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.dgvPaciente = new System.Windows.Forms.DataGridView();
+            this.DgvTurno = new System.Windows.Forms.DataGridView();
             this.EditarP = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -88,7 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelRegistro.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTurno)).BeginInit();
             this.PanelTurno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
@@ -498,30 +498,30 @@
             this.lblApellido.TabIndex = 0;
             this.lblApellido.Text = "Apellido:";
             // 
-            // dgvPaciente
+            // DgvTurno
             // 
-            this.dgvPaciente.AllowUserToAddRows = false;
-            this.dgvPaciente.AllowUserToDeleteRows = false;
-            this.dgvPaciente.AllowUserToResizeRows = false;
-            this.dgvPaciente.BackgroundColor = System.Drawing.Color.Black;
-            this.dgvPaciente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPaciente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaciente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DgvTurno.AllowUserToAddRows = false;
+            this.DgvTurno.AllowUserToDeleteRows = false;
+            this.DgvTurno.AllowUserToResizeRows = false;
+            this.DgvTurno.BackgroundColor = System.Drawing.Color.Black;
+            this.DgvTurno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DgvTurno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvTurno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EditarP,
             this.Eliminar});
-            this.dgvPaciente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPaciente.GridColor = System.Drawing.Color.Black;
-            this.dgvPaciente.Location = new System.Drawing.Point(0, 79);
-            this.dgvPaciente.Name = "dgvPaciente";
-            this.dgvPaciente.ReadOnly = true;
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.dgvPaciente.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.dgvPaciente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPaciente.Size = new System.Drawing.Size(820, 616);
-            this.dgvPaciente.TabIndex = 1;
-            this.dgvPaciente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaciente_CellClick);
+            this.DgvTurno.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvTurno.GridColor = System.Drawing.Color.Black;
+            this.DgvTurno.Location = new System.Drawing.Point(0, 79);
+            this.DgvTurno.Name = "DgvTurno";
+            this.DgvTurno.ReadOnly = true;
+            this.DgvTurno.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
+            this.DgvTurno.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.DgvTurno.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.DgvTurno.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.DgvTurno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvTurno.Size = new System.Drawing.Size(820, 616);
+            this.DgvTurno.TabIndex = 1;
+            this.DgvTurno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaciente_CellClick);
             // 
             // EditarP
             // 
@@ -737,7 +737,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PanelTurno);
             this.Controls.Add(this.PanelRegistro);
-            this.Controls.Add(this.dgvPaciente);
+            this.Controls.Add(this.DgvTurno);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Paciente";
@@ -749,7 +749,7 @@
             this.PanelRegistro.ResumeLayout(false);
             this.PanelRegistro.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaciente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvTurno)).EndInit();
             this.PanelTurno.ResumeLayout(false);
             this.PanelTurno.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
@@ -761,7 +761,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvPaciente;
+        private System.Windows.Forms.DataGridView DgvTurno;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox tbxBuscar;

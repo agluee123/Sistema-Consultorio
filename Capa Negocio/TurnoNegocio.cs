@@ -69,5 +69,32 @@ namespace Capa_Negocio
             }
         }
 
+        public void Modificar(Turno modificar)
+        {
+            Acceso_a_datos datos = new Acceso_a_datos();
+            try
+            {
+                datos.setearConsulta("UPDATE Turno SET Fecha = @Fecha, Hora = @Hora, MotivoConsulta = @MotivoConsulta, EstadoTurno = @EstadoTurno, MedicoId = @MedicoId, PacienteId = @PacienteId, Diagnostico = @Diagnostico WHERE IdTurno=@IdTurno");
+
+                datos.setearParametro("@IdTurno", modificar.IdTurno);
+                datos.setearParametro("@Fecha", modificar.Fecha);
+                datos.setearParametro("@Hora", modificar.Hora);
+                datos.setearParametro("@MoticoConsulta", modificar.MotivoConsulta);
+                datos.setearParametro("@EstadoTurno", modificar.EstadoTurno);
+                datos.setearParametro("@MedicoId", modificar.MedicoId);
+                datos.setearParametro("@PacienteId", modificar.PacienteId);
+                datos.setearParametro("@Diagnostico", modificar.Diagnostico);
+
+                datos.ejecutarAccion();
+
+                datos.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
     }
 }

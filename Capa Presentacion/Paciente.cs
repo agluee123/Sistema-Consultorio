@@ -61,7 +61,7 @@ namespace Capa_Presentacion
         {
             PanelRegistro.Visible= false;
             PanelTurno.Visible= false;  
-            DiseñoDgv(ref dgvPaciente);
+            DiseñoDgv(ref DgvTurno);
             CargarDatos();
             maskedTextBox1.Mask = "00:00";  // Formato HH:mm
             maskedTextBox1.ValidatingType = typeof(DateTime);
@@ -103,7 +103,7 @@ namespace Capa_Presentacion
             try
             {
                 lista = new PacienteNegocio().listar();
-                dgvPaciente.DataSource = lista;
+                DgvTurno.DataSource = lista;
 
             }
             catch (Exception ex)
@@ -114,12 +114,12 @@ namespace Capa_Presentacion
 
         private void dgvPaciente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == dgvPaciente.Columns["EditarP"].Index)
+            if (e.RowIndex >= 0 && e.ColumnIndex == DgvTurno.Columns["EditarP"].Index)
             {
                 ObtenerPacientesEditar(e.RowIndex);
                    
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == dgvPaciente.Columns["Eliminar"].Index)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == DgvTurno.Columns["Eliminar"].Index)
             {
                 // Mostrar un mensaje de confirmación
                 var confirmResult = MessageBox.Show(
@@ -137,7 +137,7 @@ namespace Capa_Presentacion
                     try
                     {
                         PacienteNegocio negocio = new PacienteNegocio();
-                        Capa_Dominio.Paciente seleccionado = (Capa_Dominio.Paciente)dgvPaciente.CurrentRow.DataBoundItem;
+                        Capa_Dominio.Paciente seleccionado = (Capa_Dominio.Paciente)DgvTurno.CurrentRow.DataBoundItem;
 
                         seleccionado.Nombre = tbxNombre.Text;
                         seleccionado.Apellido = tbxApellido.Text;
@@ -165,7 +165,7 @@ namespace Capa_Presentacion
 
             else if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvPaciente.Rows[e.RowIndex];
+                DataGridViewRow row = DgvTurno.Rows[e.RowIndex];
                 id_Paciente= Convert.ToInt32(row.Cells["IdPaciente"].Value);
             }
             
@@ -175,16 +175,16 @@ namespace Capa_Presentacion
         {
             try
             {
-                id_Paciente = Convert.ToInt32(dgvPaciente.Rows[rowIndex].Cells[2].Value);
-                tbxNombre.Text = dgvPaciente.Rows[rowIndex].Cells[3].Value?.ToString() ?? string.Empty;
-                tbxApellido.Text = dgvPaciente.Rows[rowIndex].Cells[4].Value?.ToString() ?? string.Empty;
-                tbxDni.Text = dgvPaciente.Rows[rowIndex].Cells[5].Value?.ToString() ?? string.Empty;
-                tbxCorreo.Text = dgvPaciente.Rows[rowIndex].Cells[6].Value?.ToString() ?? string.Empty;
-                tbxTelefono.Text = dgvPaciente.Rows[rowIndex].Cells[7].Value?.ToString() ?? string.Empty;
-                tbxDireccion.Text = dgvPaciente.Rows[rowIndex].Cells[8].Value?.ToString() ?? string.Empty;
-                cbxGenero.SelectedItem = dgvPaciente.Rows[rowIndex].Cells[9].Value?.ToString();
-                dtpEdad.Value = Convert.ToDateTime(dgvPaciente.Rows[rowIndex].Cells[10].Value);
-                tbxCondicion.Text = dgvPaciente.Rows[rowIndex].Cells[11].Value?.ToString() ?? string.Empty;
+                id_Paciente = Convert.ToInt32(DgvTurno.Rows[rowIndex].Cells[2].Value);
+                tbxNombre.Text = DgvTurno.Rows[rowIndex].Cells[3].Value?.ToString() ?? string.Empty;
+                tbxApellido.Text = DgvTurno.Rows[rowIndex].Cells[4].Value?.ToString() ?? string.Empty;
+                tbxDni.Text = DgvTurno.Rows[rowIndex].Cells[5].Value?.ToString() ?? string.Empty;
+                tbxCorreo.Text = DgvTurno.Rows[rowIndex].Cells[6].Value?.ToString() ?? string.Empty;
+                tbxTelefono.Text = DgvTurno.Rows[rowIndex].Cells[7].Value?.ToString() ?? string.Empty;
+                tbxDireccion.Text = DgvTurno.Rows[rowIndex].Cells[8].Value?.ToString() ?? string.Empty;
+                cbxGenero.SelectedItem = DgvTurno.Rows[rowIndex].Cells[9].Value?.ToString();
+                dtpEdad.Value = Convert.ToDateTime(DgvTurno.Rows[rowIndex].Cells[10].Value);
+                tbxCondicion.Text = DgvTurno.Rows[rowIndex].Cells[11].Value?.ToString() ?? string.Empty;
                 PanelRegistro.Visible = true;
                 PanelRegistro.Dock = DockStyle.Fill;
                 btnGuardar.Visible = false;
@@ -200,16 +200,16 @@ namespace Capa_Presentacion
 
         private void PacienteEliminar(int rowIndex)
         {
-            id_Paciente = Convert.ToInt32(dgvPaciente.Rows[rowIndex].Cells[2].Value);
-            tbxNombre.Text = dgvPaciente.Rows[rowIndex].Cells[3].Value?.ToString() ?? string.Empty;
-            tbxApellido.Text = dgvPaciente.Rows[rowIndex].Cells[4].Value?.ToString() ?? string.Empty;
-            tbxDni.Text = dgvPaciente.Rows[rowIndex].Cells[5].Value?.ToString() ?? string.Empty;
-            tbxCorreo.Text = dgvPaciente.Rows[rowIndex].Cells[6].Value?.ToString() ?? string.Empty;
-            tbxTelefono.Text = dgvPaciente.Rows[rowIndex].Cells[7].Value?.ToString() ?? string.Empty;
-            tbxDireccion.Text = dgvPaciente.Rows[rowIndex].Cells[8].Value?.ToString() ?? string.Empty;
-            cbxGenero.SelectedItem = dgvPaciente.Rows[rowIndex].Cells[9].Value?.ToString();
-            dtpEdad.Value = Convert.ToDateTime(dgvPaciente.Rows[rowIndex].Cells[10].Value);
-            tbxCondicion.Text = dgvPaciente.Rows[rowIndex].Cells[11].Value?.ToString() ?? string.Empty;
+            id_Paciente = Convert.ToInt32(DgvTurno.Rows[rowIndex].Cells[2].Value);
+            tbxNombre.Text = DgvTurno.Rows[rowIndex].Cells[3].Value?.ToString() ?? string.Empty;
+            tbxApellido.Text = DgvTurno.Rows[rowIndex].Cells[4].Value?.ToString() ?? string.Empty;
+            tbxDni.Text = DgvTurno.Rows[rowIndex].Cells[5].Value?.ToString() ?? string.Empty;
+            tbxCorreo.Text = DgvTurno.Rows[rowIndex].Cells[6].Value?.ToString() ?? string.Empty;
+            tbxTelefono.Text = DgvTurno.Rows[rowIndex].Cells[7].Value?.ToString() ?? string.Empty;
+            tbxDireccion.Text = DgvTurno.Rows[rowIndex].Cells[8].Value?.ToString() ?? string.Empty;
+            cbxGenero.SelectedItem = DgvTurno.Rows[rowIndex].Cells[9].Value?.ToString();
+            dtpEdad.Value = Convert.ToDateTime(DgvTurno.Rows[rowIndex].Cells[10].Value);
+            tbxCondicion.Text = DgvTurno.Rows[rowIndex].Cells[11].Value?.ToString() ?? string.Empty;
 
         }
 
@@ -218,7 +218,7 @@ namespace Capa_Presentacion
             try
             {
                 PacienteNegocio negocio = new PacienteNegocio();
-                Capa_Dominio.Paciente seleccionado = (Capa_Dominio.Paciente)dgvPaciente.CurrentRow.DataBoundItem;
+                Capa_Dominio.Paciente seleccionado = (Capa_Dominio.Paciente)DgvTurno.CurrentRow.DataBoundItem;
 
                 seleccionado.Nombre = tbxNombre.Text;
                 seleccionado.Apellido = tbxApellido.Text;
@@ -304,8 +304,6 @@ namespace Capa_Presentacion
         
             try
             {
-
-
                 var listaMedicos = new MedicoNegocio().listar();
                 bindingSource.DataSource = listaMedicos;
                 dgvMed.DataSource = bindingSource;

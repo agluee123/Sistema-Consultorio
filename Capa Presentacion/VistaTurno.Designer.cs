@@ -35,39 +35,34 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tbxBuscar = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.dgvTurno = new System.Windows.Forms.DataGridView();
             this.EditarP = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.PanelRegistro = new System.Windows.Forms.Panel();
-            this.ChSabado = new System.Windows.Forms.CheckBox();
-            this.ChDomingo = new System.Windows.Forms.CheckBox();
-            this.ChViernes = new System.Windows.Forms.CheckBox();
-            this.ChJueves = new System.Windows.Forms.CheckBox();
-            this.ChMiercoles = new System.Windows.Forms.CheckBox();
-            this.chMartes = new System.Windows.Forms.CheckBox();
-            this.chLunes = new System.Windows.Forms.CheckBox();
-            this.lblDisponibilidad = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.tbxMatricula = new System.Windows.Forms.TextBox();
-            this.tbxEspecialidad = new System.Windows.Forms.TextBox();
-            this.tbxApellido = new System.Windows.Forms.TextBox();
-            this.tbxNombre = new System.Windows.Forms.TextBox();
-            this.lblEspecialidad = new System.Windows.Forms.Label();
-            this.lblMatricula = new System.Windows.Forms.Label();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblApellido = new System.Windows.Forms.Label();
+            this.PanelTurno = new System.Windows.Forms.Panel();
+            this.dgvMed = new System.Windows.Forms.DataGridView();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnGuardarTurno = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.tbxConsulta = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tbxDiagnostico = new System.Windows.Forms.TextBox();
+            this.lblDiagnostio = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurno)).BeginInit();
-            this.PanelRegistro.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.PanelTurno.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewImageColumn1
@@ -90,7 +85,6 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.tbxBuscar);
-            this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -127,22 +121,6 @@
             this.tbxBuscar.Size = new System.Drawing.Size(339, 19);
             this.tbxBuscar.TabIndex = 5;
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackColor = System.Drawing.Color.Black;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAgregar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(712, 0);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(108, 79);
-            this.btnAgregar.TabIndex = 4;
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            // 
             // dgvTurno
             // 
             this.dgvTurno.AllowUserToAddRows = false;
@@ -166,6 +144,7 @@
             this.dgvTurno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTurno.Size = new System.Drawing.Size(820, 693);
             this.dgvTurno.TabIndex = 5;
+            this.dgvTurno.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTurno_CellClick);
             // 
             // EditarP
             // 
@@ -183,289 +162,222 @@
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
             // 
-            // PanelRegistro
+            // PanelTurno
             // 
-            this.PanelRegistro.BackColor = System.Drawing.Color.Black;
-            this.PanelRegistro.Controls.Add(this.ChSabado);
-            this.PanelRegistro.Controls.Add(this.ChDomingo);
-            this.PanelRegistro.Controls.Add(this.ChViernes);
-            this.PanelRegistro.Controls.Add(this.ChJueves);
-            this.PanelRegistro.Controls.Add(this.ChMiercoles);
-            this.PanelRegistro.Controls.Add(this.chMartes);
-            this.PanelRegistro.Controls.Add(this.chLunes);
-            this.PanelRegistro.Controls.Add(this.lblDisponibilidad);
-            this.PanelRegistro.Controls.Add(this.flowLayoutPanel1);
-            this.PanelRegistro.Controls.Add(this.panel8);
-            this.PanelRegistro.Controls.Add(this.panel7);
-            this.PanelRegistro.Controls.Add(this.panel6);
-            this.PanelRegistro.Controls.Add(this.panel5);
-            this.PanelRegistro.Controls.Add(this.tbxMatricula);
-            this.PanelRegistro.Controls.Add(this.tbxEspecialidad);
-            this.PanelRegistro.Controls.Add(this.tbxApellido);
-            this.PanelRegistro.Controls.Add(this.tbxNombre);
-            this.PanelRegistro.Controls.Add(this.lblEspecialidad);
-            this.PanelRegistro.Controls.Add(this.lblMatricula);
-            this.PanelRegistro.Controls.Add(this.lblNombre);
-            this.PanelRegistro.Controls.Add(this.lblApellido);
-            this.PanelRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanelRegistro.Location = new System.Drawing.Point(41, 130);
-            this.PanelRegistro.Name = "PanelRegistro";
-            this.PanelRegistro.Size = new System.Drawing.Size(739, 512);
-            this.PanelRegistro.TabIndex = 7;
-            this.PanelRegistro.Visible = false;
+            this.PanelTurno.BackColor = System.Drawing.Color.Black;
+            this.PanelTurno.Controls.Add(this.panel2);
+            this.PanelTurno.Controls.Add(this.tbxDiagnostico);
+            this.PanelTurno.Controls.Add(this.lblDiagnostio);
+            this.PanelTurno.Controls.Add(this.dgvMed);
+            this.PanelTurno.Controls.Add(this.maskedTextBox1);
+            this.PanelTurno.Controls.Add(this.label2);
+            this.PanelTurno.Controls.Add(this.flowLayoutPanel2);
+            this.PanelTurno.Controls.Add(this.cbxEstado);
+            this.PanelTurno.Controls.Add(this.dtpFecha);
+            this.PanelTurno.Controls.Add(this.panel13);
+            this.PanelTurno.Controls.Add(this.panel14);
+            this.PanelTurno.Controls.Add(this.tbxConsulta);
+            this.PanelTurno.Controls.Add(this.label3);
+            this.PanelTurno.Controls.Add(this.label5);
+            this.PanelTurno.Controls.Add(this.label6);
+            this.PanelTurno.Controls.Add(this.label7);
+            this.PanelTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelTurno.Location = new System.Drawing.Point(41, 130);
+            this.PanelTurno.Name = "PanelTurno";
+            this.PanelTurno.Size = new System.Drawing.Size(739, 512);
+            this.PanelTurno.TabIndex = 6;
+            this.PanelTurno.Visible = false;
             // 
-            // ChSabado
+            // dgvMed
             // 
-            this.ChSabado.AutoSize = true;
-            this.ChSabado.ForeColor = System.Drawing.Color.White;
-            this.ChSabado.Location = new System.Drawing.Point(488, 194);
-            this.ChSabado.Name = "ChSabado";
-            this.ChSabado.Size = new System.Drawing.Size(54, 24);
-            this.ChSabado.TabIndex = 21;
-            this.ChSabado.Text = "sab";
-            this.ChSabado.UseVisualStyleBackColor = true;
+            this.dgvMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMed.Location = new System.Drawing.Point(222, 56);
+            this.dgvMed.Name = "dgvMed";
+            this.dgvMed.ReadOnly = true;
+            this.dgvMed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMed.Size = new System.Drawing.Size(502, 105);
+            this.dgvMed.TabIndex = 17;
             // 
-            // ChDomingo
+            // maskedTextBox1
             // 
-            this.ChDomingo.AutoSize = true;
-            this.ChDomingo.ForeColor = System.Drawing.Color.White;
-            this.ChDomingo.Location = new System.Drawing.Point(548, 194);
-            this.ChDomingo.Name = "ChDomingo";
-            this.ChDomingo.Size = new System.Drawing.Size(59, 24);
-            this.ChDomingo.TabIndex = 20;
-            this.ChDomingo.Text = "dom";
-            this.ChDomingo.UseVisualStyleBackColor = true;
+            this.maskedTextBox1.Location = new System.Drawing.Point(223, 214);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(340, 26);
+            this.maskedTextBox1.TabIndex = 16;
             // 
-            // ChViernes
+            // label2
             // 
-            this.ChViernes.AutoSize = true;
-            this.ChViernes.ForeColor = System.Drawing.Color.White;
-            this.ChViernes.Location = new System.Drawing.Point(435, 194);
-            this.ChViernes.Name = "ChViernes";
-            this.ChViernes.Size = new System.Drawing.Size(47, 24);
-            this.ChViernes.TabIndex = 19;
-            this.ChViernes.Text = "vie";
-            this.ChViernes.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(55, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(159, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Seleccion de Medico:";
             // 
-            // ChJueves
+            // flowLayoutPanel2
             // 
-            this.ChJueves.AutoSize = true;
-            this.ChJueves.ForeColor = System.Drawing.Color.White;
-            this.ChJueves.Location = new System.Drawing.Point(380, 194);
-            this.ChJueves.Name = "ChJueves";
-            this.ChJueves.Size = new System.Drawing.Size(49, 24);
-            this.ChJueves.TabIndex = 18;
-            this.ChJueves.Text = "jue";
-            this.ChJueves.UseVisualStyleBackColor = true;
+            this.flowLayoutPanel2.Controls.Add(this.btnGuardarTurno);
+            this.flowLayoutPanel2.Controls.Add(this.button2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(222, 422);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(339, 79);
+            this.flowLayoutPanel2.TabIndex = 13;
             // 
-            // ChMiercoles
+            // btnGuardarTurno
             // 
-            this.ChMiercoles.AutoSize = true;
-            this.ChMiercoles.ForeColor = System.Drawing.Color.White;
-            this.ChMiercoles.Location = new System.Drawing.Point(332, 194);
-            this.ChMiercoles.Name = "ChMiercoles";
-            this.ChMiercoles.Size = new System.Drawing.Size(44, 24);
-            this.ChMiercoles.TabIndex = 17;
-            this.ChMiercoles.Text = "mi";
-            this.ChMiercoles.UseVisualStyleBackColor = true;
+            this.btnGuardarTurno.BackColor = System.Drawing.Color.Black;
+            this.btnGuardarTurno.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGuardarTurno.FlatAppearance.BorderSize = 0;
+            this.btnGuardarTurno.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGuardarTurno.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnGuardarTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarTurno.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarTurno.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarTurno.Image")));
+            this.btnGuardarTurno.Location = new System.Drawing.Point(3, 3);
+            this.btnGuardarTurno.Name = "btnGuardarTurno";
+            this.btnGuardarTurno.Size = new System.Drawing.Size(99, 76);
+            this.btnGuardarTurno.TabIndex = 0;
+            this.btnGuardarTurno.UseVisualStyleBackColor = false;
             // 
-            // chMartes
+            // button2
             // 
-            this.chMartes.AutoSize = true;
-            this.chMartes.ForeColor = System.Drawing.Color.White;
-            this.chMartes.Location = new System.Drawing.Point(271, 194);
-            this.chMartes.Name = "chMartes";
-            this.chMartes.Size = new System.Drawing.Size(55, 24);
-            this.chMartes.TabIndex = 16;
-            this.chMartes.Text = "mar";
-            this.chMartes.UseVisualStyleBackColor = true;
+            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(108, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 76);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // chLunes
+            // cbxEstado
             // 
-            this.chLunes.AutoSize = true;
-            this.chLunes.ForeColor = System.Drawing.Color.White;
-            this.chLunes.Location = new System.Drawing.Point(225, 194);
-            this.chLunes.Name = "chLunes";
-            this.chLunes.Size = new System.Drawing.Size(40, 24);
-            this.chLunes.TabIndex = 15;
-            this.chLunes.Text = "lu";
-            this.chLunes.UseVisualStyleBackColor = true;
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Pendiente"});
+            this.cbxEstado.Location = new System.Drawing.Point(219, 302);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(339, 28);
+            this.cbxEstado.TabIndex = 12;
             // 
-            // lblDisponibilidad
+            // dtpFecha
             // 
-            this.lblDisponibilidad.AutoSize = true;
-            this.lblDisponibilidad.BackColor = System.Drawing.Color.Black;
-            this.lblDisponibilidad.ForeColor = System.Drawing.Color.White;
-            this.lblDisponibilidad.Location = new System.Drawing.Point(101, 194);
-            this.lblDisponibilidad.Name = "lblDisponibilidad";
-            this.lblDisponibilidad.Size = new System.Drawing.Size(111, 20);
-            this.lblDisponibilidad.TabIndex = 14;
-            this.lblDisponibilidad.Text = "Disponibilidad:";
+            this.dtpFecha.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.Black;
+            this.dtpFecha.Location = new System.Drawing.Point(222, 172);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(339, 26);
+            this.dtpFecha.TabIndex = 11;
             // 
-            // flowLayoutPanel1
+            // panel13
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnGuardar);
-            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(222, 384);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(339, 79);
-            this.flowLayoutPanel1.TabIndex = 13;
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
+            this.panel13.Location = new System.Drawing.Point(222, 280);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(339, 1);
+            this.panel13.TabIndex = 10;
             // 
-            // btnGuardar
+            // panel14
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.Black;
-            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
-            this.btnGuardar.Location = new System.Drawing.Point(3, 3);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(99, 76);
-            this.btnGuardar.TabIndex = 0;
-            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
+            this.panel14.Location = new System.Drawing.Point(223, 245);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(339, 1);
+            this.panel14.TabIndex = 10;
             // 
-            // btnEditar
+            // tbxConsulta
             // 
-            this.btnEditar.BackColor = System.Drawing.Color.Black;
-            this.btnEditar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.Location = new System.Drawing.Point(108, 3);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(99, 76);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.UseVisualStyleBackColor = false;
+            this.tbxConsulta.BackColor = System.Drawing.Color.Black;
+            this.tbxConsulta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxConsulta.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbxConsulta.Location = new System.Drawing.Point(222, 255);
+            this.tbxConsulta.Name = "tbxConsulta";
+            this.tbxConsulta.Size = new System.Drawing.Size(339, 19);
+            this.tbxConsulta.TabIndex = 9;
             // 
-            // panel8
+            // label3
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel8.Location = new System.Drawing.Point(222, 165);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(339, 1);
-            this.panel8.TabIndex = 10;
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(159, 217);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Hora:";
             // 
-            // panel7
+            // label5
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel7.Location = new System.Drawing.Point(222, 125);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(339, 1);
-            this.panel7.TabIndex = 10;
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(59, 259);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(148, 20);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Motivo de Consulta:";
             // 
-            // panel6
+            // label6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel6.Location = new System.Drawing.Point(222, 85);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(339, 1);
-            this.panel6.TabIndex = 10;
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(140, 308);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 20);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Estado:";
             // 
-            // panel5
+            // label7
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel5.Location = new System.Drawing.Point(222, 42);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(339, 1);
-            this.panel5.TabIndex = 10;
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(153, 172);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Fecha:";
             // 
-            // tbxMatricula
+            // panel2
             // 
-            this.tbxMatricula.BackColor = System.Drawing.Color.Black;
-            this.tbxMatricula.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxMatricula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxMatricula.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbxMatricula.Location = new System.Drawing.Point(222, 140);
-            this.tbxMatricula.Name = "tbxMatricula";
-            this.tbxMatricula.Size = new System.Drawing.Size(339, 19);
-            this.tbxMatricula.TabIndex = 9;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
+            this.panel2.Location = new System.Drawing.Point(221, 372);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(339, 1);
+            this.panel2.TabIndex = 20;
             // 
-            // tbxEspecialidad
+            // tbxDiagnostico
             // 
-            this.tbxEspecialidad.BackColor = System.Drawing.Color.Black;
-            this.tbxEspecialidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxEspecialidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxEspecialidad.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbxEspecialidad.Location = new System.Drawing.Point(222, 97);
-            this.tbxEspecialidad.Name = "tbxEspecialidad";
-            this.tbxEspecialidad.Size = new System.Drawing.Size(339, 19);
-            this.tbxEspecialidad.TabIndex = 9;
+            this.tbxDiagnostico.BackColor = System.Drawing.Color.Black;
+            this.tbxDiagnostico.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDiagnostico.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbxDiagnostico.Location = new System.Drawing.Point(221, 347);
+            this.tbxDiagnostico.Name = "tbxDiagnostico";
+            this.tbxDiagnostico.Size = new System.Drawing.Size(339, 19);
+            this.tbxDiagnostico.TabIndex = 19;
             // 
-            // tbxApellido
+            // lblDiagnostio
             // 
-            this.tbxApellido.BackColor = System.Drawing.Color.Black;
-            this.tbxApellido.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxApellido.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbxApellido.Location = new System.Drawing.Point(222, 60);
-            this.tbxApellido.Name = "tbxApellido";
-            this.tbxApellido.Size = new System.Drawing.Size(339, 19);
-            this.tbxApellido.TabIndex = 9;
-            // 
-            // tbxNombre
-            // 
-            this.tbxNombre.BackColor = System.Drawing.Color.Black;
-            this.tbxNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxNombre.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbxNombre.Location = new System.Drawing.Point(222, 17);
-            this.tbxNombre.Name = "tbxNombre";
-            this.tbxNombre.Size = new System.Drawing.Size(339, 19);
-            this.tbxNombre.TabIndex = 9;
-            // 
-            // lblEspecialidad
-            // 
-            this.lblEspecialidad.AutoSize = true;
-            this.lblEspecialidad.ForeColor = System.Drawing.Color.White;
-            this.lblEspecialidad.Location = new System.Drawing.Point(114, 101);
-            this.lblEspecialidad.Name = "lblEspecialidad";
-            this.lblEspecialidad.Size = new System.Drawing.Size(103, 20);
-            this.lblEspecialidad.TabIndex = 8;
-            this.lblEspecialidad.Text = "Especialidad:";
-            // 
-            // lblMatricula
-            // 
-            this.lblMatricula.AutoSize = true;
-            this.lblMatricula.ForeColor = System.Drawing.Color.White;
-            this.lblMatricula.Location = new System.Drawing.Point(136, 141);
-            this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(77, 20);
-            this.lblMatricula.TabIndex = 6;
-            this.lblMatricula.Text = "Matricula:";
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(147, 22);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(69, 20);
-            this.lblNombre.TabIndex = 1;
-            this.lblNombre.Text = "Nombre:";
-            // 
-            // lblApellido
-            // 
-            this.lblApellido.AutoSize = true;
-            this.lblApellido.ForeColor = System.Drawing.Color.White;
-            this.lblApellido.Location = new System.Drawing.Point(147, 61);
-            this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(69, 20);
-            this.lblApellido.TabIndex = 0;
-            this.lblApellido.Text = "Apellido:";
+            this.lblDiagnostio.AutoSize = true;
+            this.lblDiagnostio.ForeColor = System.Drawing.Color.White;
+            this.lblDiagnostio.Location = new System.Drawing.Point(58, 351);
+            this.lblDiagnostio.Name = "lblDiagnostio";
+            this.lblDiagnostio.Size = new System.Drawing.Size(148, 20);
+            this.lblDiagnostio.TabIndex = 18;
+            this.lblDiagnostio.Text = "Motivo de Consulta:";
             // 
             // VistaTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.PanelRegistro);
+            this.Controls.Add(this.PanelTurno);
             this.Controls.Add(this.dgvTurno);
             this.Controls.Add(this.panel1);
             this.Name = "VistaTurno";
@@ -475,9 +387,10 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurno)).EndInit();
-            this.PanelRegistro.ResumeLayout(false);
-            this.PanelRegistro.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.PanelTurno.ResumeLayout(false);
+            this.PanelTurno.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -490,33 +403,27 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox tbxBuscar;
-        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dgvTurno;
         private System.Windows.Forms.DataGridViewImageColumn EditarP;
         private System.Windows.Forms.DataGridViewImageColumn Eliminar;
-        private System.Windows.Forms.Panel PanelRegistro;
-        private System.Windows.Forms.CheckBox ChSabado;
-        private System.Windows.Forms.CheckBox ChDomingo;
-        private System.Windows.Forms.CheckBox ChViernes;
-        private System.Windows.Forms.CheckBox ChJueves;
-        private System.Windows.Forms.CheckBox ChMiercoles;
-        private System.Windows.Forms.CheckBox chMartes;
-        private System.Windows.Forms.CheckBox chLunes;
-        private System.Windows.Forms.Label lblDisponibilidad;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox tbxMatricula;
-        private System.Windows.Forms.TextBox tbxEspecialidad;
-        private System.Windows.Forms.TextBox tbxApellido;
-        private System.Windows.Forms.TextBox tbxNombre;
-        private System.Windows.Forms.Label lblEspecialidad;
-        private System.Windows.Forms.Label lblMatricula;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.Panel PanelTurno;
+        private System.Windows.Forms.DataGridView dgvMed;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Button btnGuardarTurno;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cbxEstado;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.TextBox tbxConsulta;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox tbxDiagnostico;
+        private System.Windows.Forms.Label lblDiagnostio;
     }
 }

@@ -21,5 +21,6 @@ namespace Capa_Dominio
         // Relación con Medico
         public int MedicoId { get; set; }
         public Medico Medico { get; set; }
+        public string Diagnostico { get; set; }
     }
 }

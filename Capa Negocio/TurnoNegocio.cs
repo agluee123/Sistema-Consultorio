@@ -75,7 +75,7 @@ namespace Capa_Negocio
             Acceso_a_datos datos = new Acceso_a_datos();
             try
             {
-                datos.setearConsulta("UPDATE Turno SET Fecha = @Fecha, Hora = @Hora, MotivoConsulta = @MotivoConsulta, EstadoTurno = @EstadoTurno, MedicoId = @MedicoId, PacienteId = @PacienteId, Diagnostico = @Diagnostico WHERE IdTurno=@IdTurno");
+                datos.setearConsulta("UPDATE Turno SET Fecha = @Fecha, Hora = @Hora, MotivoConsulta = @MotivoConsulta, EstadoTurno = @EstadoTurno, MedicoId = @MedicoId, Diagnostico = @Diagnostico WHERE IdTurno=@IdTurno");
 
                 datos.setearParametro("@IdTurno", modificar.IdTurno);
                 datos.setearParametro("@Fecha", modificar.Fecha);
@@ -83,7 +83,6 @@ namespace Capa_Negocio
                 datos.setearParametro("@MotivoConsulta", modificar.MotivoConsulta);
                 datos.setearParametro("@EstadoTurno", modificar.EstadoTurno);
                 datos.setearParametro("@MedicoId", modificar.MedicoId);
-                datos.setearParametro("@PacienteId", modificar.PacienteId);
                 datos.setearParametro("@Diagnostico", modificar.Diagnostico);
 
                 datos.ejecutarAccion();

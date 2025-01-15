@@ -194,8 +194,6 @@ namespace Capa_Presentacion
                     }
                 }));
 
-
-
             }
             else
             {
@@ -203,36 +201,7 @@ namespace Capa_Presentacion
             }
         }
 
-        private void PreseleccionarMedicoEnPanel(int idMedico)
-        {
-            // Obtener el dgvMed desde el panelMedico
-            DataGridView dgvMed = PanelTurno.Controls.OfType<DataGridView>().FirstOrDefault();
-
-            if (dgvMed != null)
-            {
-                // Iterar sobre las filas de dgvMed para buscar al médico por su ID
-                foreach (DataGridViewRow row in dgvMed.Rows)
-                {
-                    if (Convert.ToInt32(row.Cells["Medico"].Value) == idMedico)
-                    {
-                        // Limpiar la selección previa
-                        dgvMed.ClearSelection();
-
-                        // Seleccionar la fila correspondiente al médico
-                        row.Selected = true;
-
-                        // Opcional: Hacer scroll hasta la fila seleccionada
-                        dgvMed.FirstDisplayedScrollingRowIndex = row.Index;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se encontró el DataGridView de Médicos en el panel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+       
 
         private void ListarMedico()
         {
@@ -254,59 +223,75 @@ namespace Capa_Presentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            TurnoNegocio negocio = new TurnoNegocio();
+            Turno seleccionado = new Turno();
+
             try
             {
-                // Validar que se haya seleccionado un turno
-                if (dgvTurno.CurrentRow == null)
+
+                seleccionado.IdTurno = id_Turno;
+
+
+                if (TimeSpan.TryParse(maskedTextBox1.Text, out TimeSpan horaSeleccionada))
                 {
-                    MessageBox.Show("Debe seleccionar un turno para modificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    seleccionado.Hora = horaSeleccionada;
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingresa una hora válida en formato HH:mm.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Validar que se haya seleccionado un médico
-                if (dgvMed.CurrentRow == null)
+
+                if (DateTime.TryParse(dtpFecha.Text, out DateTime fechaSeleccionada))
                 {
-                    MessageBox.Show("Debe seleccionar un médico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    seleccionado.Fecha = fechaSeleccionada;
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingresa una fecha válida.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Validar el formato de la hora
-                if (!TimeSpan.TryParse(maskedTextBox1.Text, out TimeSpan hora))
-                {
-                    MessageBox.Show("Ingrese una hora válida en el formato HH:mm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Validar que el motivo de consulta no esté vacío
                 if (string.IsNullOrWhiteSpace(tbxConsulta.Text))
                 {
-                    MessageBox.Show("El motivo de consulta no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El motivo de consulta no puede estar vacío.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                seleccionado.MotivoConsulta = tbxConsulta.Text.Trim();
+
+
+                if (cbxEstado.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Por favor, selecciona un estado para el turno.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                seleccionado.EstadoTurno = cbxEstado.SelectedItem.ToString();
+
+                if (dgvMed.SelectedRows.Count > 0)
+                {
+
+                    seleccionado.MedicoId = Convert.ToInt32(dgvMed.SelectedRows[0].Cells["IdMedico"].Value);
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona un médico de la lista.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Obtener el turno seleccionado
-                Turno turnoSeleccionado = (Turno)dgvTurno.CurrentRow.DataBoundItem;
+                seleccionado.Diagnostico = string.IsNullOrWhiteSpace(tbxDiagnostico.Text) ? "Diagnóstico pendiente" : tbxDiagnostico.Text.Trim();
 
-                // Asignar valores desde los controles
-                turnoSeleccionado.Medico = new Medico
-                {
-                    IdMedico = Convert.ToInt32(dgvMed.CurrentRow.Cells["IdMedico"].Value)
-                };
-                turnoSeleccionado.Fecha = dtpFecha.Value.Date;
-                turnoSeleccionado.Hora = hora;
-                turnoSeleccionado.MotivoConsulta = tbxConsulta.Text.Trim();
-                turnoSeleccionado.EstadoTurno = cbxEstado.SelectedItem?.ToString();
-                turnoSeleccionado.Diagnostico = tbxDiagnostico.Text.Trim();
 
-                // Modificar el turno en la base de datos
-                TurnoNegocio negocio = new TurnoNegocio();
-                negocio.Modificar(turnoSeleccionado);
+                negocio.Modificar(seleccionado);
 
-                MessageBox.Show("Turno modificado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Turno actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarDatos();
+                PanelTurno.Visible = false;
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al modificar el turno: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al actualizar el turno: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

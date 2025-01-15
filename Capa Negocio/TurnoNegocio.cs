@@ -56,6 +56,7 @@ namespace Capa_Negocio
                     aux.EstadoTurno = (string)lector["EstadoTurno"];
                     aux.MedicoId = (int)lector["MedicoId"];
                     aux.PacienteId = (int)lector["PacienteId"];
+                    aux.Diagnostico = (string)lector["Diagnostico"];
 
                     lista.Add(aux);
                 }

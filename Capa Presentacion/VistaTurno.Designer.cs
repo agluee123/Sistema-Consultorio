@@ -367,11 +367,11 @@
             // 
             this.lblDiagnostio.AutoSize = true;
             this.lblDiagnostio.ForeColor = System.Drawing.Color.White;
-            this.lblDiagnostio.Location = new System.Drawing.Point(58, 351);
+            this.lblDiagnostio.Location = new System.Drawing.Point(99, 351);
             this.lblDiagnostio.Name = "lblDiagnostio";
-            this.lblDiagnostio.Size = new System.Drawing.Size(148, 20);
+            this.lblDiagnostio.Size = new System.Drawing.Size(97, 20);
             this.lblDiagnostio.TabIndex = 18;
-            this.lblDiagnostio.Text = "Motivo de Consulta:";
+            this.lblDiagnostio.Text = "Diagnostico:";
             // 
             // VistaTurno
             // 

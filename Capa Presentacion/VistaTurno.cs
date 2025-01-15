@@ -251,5 +251,63 @@ namespace Capa_Presentacion
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validar que se haya seleccionado un turno
+                if (dgvTurno.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un turno para modificar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Validar que se haya seleccionado un médico
+                if (dgvMed.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un médico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Validar el formato de la hora
+                if (!TimeSpan.TryParse(maskedTextBox1.Text, out TimeSpan hora))
+                {
+                    MessageBox.Show("Ingrese una hora válida en el formato HH:mm.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Validar que el motivo de consulta no esté vacío
+                if (string.IsNullOrWhiteSpace(tbxConsulta.Text))
+                {
+                    MessageBox.Show("El motivo de consulta no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Obtener el turno seleccionado
+                Turno turnoSeleccionado = (Turno)dgvTurno.CurrentRow.DataBoundItem;
+
+                // Asignar valores desde los controles
+                turnoSeleccionado.Medico = new Medico
+                {
+                    IdMedico = Convert.ToInt32(dgvMed.CurrentRow.Cells["IdMedico"].Value)
+                };
+                turnoSeleccionado.Fecha = dtpFecha.Value.Date;
+                turnoSeleccionado.Hora = hora;
+                turnoSeleccionado.MotivoConsulta = tbxConsulta.Text.Trim();
+                turnoSeleccionado.EstadoTurno = cbxEstado.SelectedItem?.ToString();
+                turnoSeleccionado.Diagnostico = tbxDiagnostico.Text.Trim();
+
+                // Modificar el turno en la base de datos
+                TurnoNegocio negocio = new TurnoNegocio();
+                negocio.Modificar(turnoSeleccionado);
+
+                MessageBox.Show("Turno modificado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al modificar el turno: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -39,12 +39,14 @@
             this.EditarP = new System.Windows.Forms.DataGridViewImageColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelTurno = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tbxDiagnostico = new System.Windows.Forms.TextBox();
+            this.lblDiagnostio = new System.Windows.Forms.Label();
             this.dgvMed = new System.Windows.Forms.DataGridView();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGuardarTurno = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -54,9 +56,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tbxDiagnostico = new System.Windows.Forms.TextBox();
-            this.lblDiagnostio = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurno)).BeginInit();
@@ -126,6 +125,7 @@
             this.dgvTurno.AllowUserToAddRows = false;
             this.dgvTurno.AllowUserToDeleteRows = false;
             this.dgvTurno.AllowUserToResizeRows = false;
+            this.dgvTurno.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTurno.BackgroundColor = System.Drawing.Color.Black;
             this.dgvTurno.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTurno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -184,18 +184,49 @@
             this.PanelTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PanelTurno.Location = new System.Drawing.Point(41, 130);
             this.PanelTurno.Name = "PanelTurno";
-            this.PanelTurno.Size = new System.Drawing.Size(739, 512);
+            this.PanelTurno.Size = new System.Drawing.Size(739, 618);
             this.PanelTurno.TabIndex = 6;
             this.PanelTurno.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
+            this.panel2.Location = new System.Drawing.Point(221, 372);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(339, 1);
+            this.panel2.TabIndex = 20;
+            // 
+            // tbxDiagnostico
+            // 
+            this.tbxDiagnostico.BackColor = System.Drawing.Color.Black;
+            this.tbxDiagnostico.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDiagnostico.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbxDiagnostico.Location = new System.Drawing.Point(221, 347);
+            this.tbxDiagnostico.Name = "tbxDiagnostico";
+            this.tbxDiagnostico.Size = new System.Drawing.Size(339, 19);
+            this.tbxDiagnostico.TabIndex = 19;
+            // 
+            // lblDiagnostio
+            // 
+            this.lblDiagnostio.AutoSize = true;
+            this.lblDiagnostio.ForeColor = System.Drawing.Color.White;
+            this.lblDiagnostio.Location = new System.Drawing.Point(99, 351);
+            this.lblDiagnostio.Name = "lblDiagnostio";
+            this.lblDiagnostio.Size = new System.Drawing.Size(97, 20);
+            this.lblDiagnostio.TabIndex = 18;
+            this.lblDiagnostio.Text = "Diagnostico:";
+            // 
             // dgvMed
             // 
+            this.dgvMed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMed.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMed.Location = new System.Drawing.Point(222, 56);
             this.dgvMed.Name = "dgvMed";
             this.dgvMed.ReadOnly = true;
             this.dgvMed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMed.Size = new System.Drawing.Size(502, 105);
+            this.dgvMed.Size = new System.Drawing.Size(499, 105);
             this.dgvMed.TabIndex = 17;
             // 
             // maskedTextBox1
@@ -217,46 +248,29 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.btnGuardarTurno);
-            this.flowLayoutPanel2.Controls.Add(this.button2);
+            this.flowLayoutPanel2.Controls.Add(this.btnModificar);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(222, 422);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(339, 79);
             this.flowLayoutPanel2.TabIndex = 13;
             // 
-            // btnGuardarTurno
+            // btnModificar
             // 
-            this.btnGuardarTurno.BackColor = System.Drawing.Color.Black;
-            this.btnGuardarTurno.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGuardarTurno.FlatAppearance.BorderSize = 0;
-            this.btnGuardarTurno.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnGuardarTurno.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.btnGuardarTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarTurno.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarTurno.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarTurno.Image")));
-            this.btnGuardarTurno.Location = new System.Drawing.Point(3, 3);
-            this.btnGuardarTurno.Name = "btnGuardarTurno";
-            this.btnGuardarTurno.Size = new System.Drawing.Size(99, 76);
-            this.btnGuardarTurno.TabIndex = 0;
-            this.btnGuardarTurno.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Black;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(108, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 76);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnModificar.BackColor = System.Drawing.Color.Black;
+            this.btnModificar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnModificar.FlatAppearance.BorderSize = 0;
+            this.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.Color.White;
+            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.Location = new System.Drawing.Point(3, 3);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(99, 76);
+            this.btnModificar.TabIndex = 1;
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // cbxEstado
             // 
@@ -344,35 +358,6 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Fecha:";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel2.Location = new System.Drawing.Point(221, 372);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(339, 1);
-            this.panel2.TabIndex = 20;
-            // 
-            // tbxDiagnostico
-            // 
-            this.tbxDiagnostico.BackColor = System.Drawing.Color.Black;
-            this.tbxDiagnostico.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDiagnostico.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbxDiagnostico.Location = new System.Drawing.Point(221, 347);
-            this.tbxDiagnostico.Name = "tbxDiagnostico";
-            this.tbxDiagnostico.Size = new System.Drawing.Size(339, 19);
-            this.tbxDiagnostico.TabIndex = 19;
-            // 
-            // lblDiagnostio
-            // 
-            this.lblDiagnostio.AutoSize = true;
-            this.lblDiagnostio.ForeColor = System.Drawing.Color.White;
-            this.lblDiagnostio.Location = new System.Drawing.Point(99, 351);
-            this.lblDiagnostio.Name = "lblDiagnostio";
-            this.lblDiagnostio.Size = new System.Drawing.Size(97, 20);
-            this.lblDiagnostio.TabIndex = 18;
-            this.lblDiagnostio.Text = "Diagnostico:";
-            // 
             // VistaTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,8 +396,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button btnGuardarTurno;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.ComboBox cbxEstado;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Panel panel13;

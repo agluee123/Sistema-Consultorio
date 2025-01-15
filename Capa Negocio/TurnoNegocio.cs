@@ -80,7 +80,7 @@ namespace Capa_Negocio
                 datos.setearParametro("@IdTurno", modificar.IdTurno);
                 datos.setearParametro("@Fecha", modificar.Fecha);
                 datos.setearParametro("@Hora", modificar.Hora);
-                datos.setearParametro("@MoticoConsulta", modificar.MotivoConsulta);
+                datos.setearParametro("@MotivoConsulta", modificar.MotivoConsulta);
                 datos.setearParametro("@EstadoTurno", modificar.EstadoTurno);
                 datos.setearParametro("@MedicoId", modificar.MedicoId);
                 datos.setearParametro("@PacienteId", modificar.PacienteId);

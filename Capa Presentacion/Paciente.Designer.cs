@@ -503,6 +503,7 @@
             this.DgvTurno.AllowUserToAddRows = false;
             this.DgvTurno.AllowUserToDeleteRows = false;
             this.DgvTurno.AllowUserToResizeRows = false;
+            this.DgvTurno.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvTurno.BackgroundColor = System.Drawing.Color.Black;
             this.DgvTurno.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvTurno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -574,6 +575,8 @@
             // 
             // dgvMed
             // 
+            this.dgvMed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMed.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMed.Location = new System.Drawing.Point(222, 56);
             this.dgvMed.Name = "dgvMed";

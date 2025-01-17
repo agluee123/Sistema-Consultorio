@@ -51,6 +51,7 @@ namespace Capa_Presentacion
             tbxTelefono.Clear();    
             tbxDireccion.Clear();
             tbxCondicion.Clear();
+            cbxGenero.SelectedIndex = -1;
         }
 
         private void PanelRegistro_Paint(object sender, PaintEventArgs e)
@@ -74,6 +75,15 @@ namespace Capa_Presentacion
             PacienteNegocio negocio =new PacienteNegocio();
             try
             {
+
+                List<string> errores = ValidarFormulario();
+
+                if (errores.Count > 0)
+                {
+                    MessageBox.Show(string.Join("\n", errores), "Errores en el formulario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 NuevoPaciente.Nombre=tbxNombre.Text; 
                 NuevoPaciente.Apellido=tbxApellido.Text; 
                 NuevoPaciente.Dni=tbxDni.Text;
@@ -86,16 +96,91 @@ namespace Capa_Presentacion
                 negocio.Agregar(NuevoPaciente);
 
                 MessageBox.Show("Paciente agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiar();
-              
+                DialogResult result = MessageBox.Show(
+                   "¿Desea agregar otro paciente?",
+                   "Confirmación",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question
+                 );
+
+                if (result == DialogResult.Yes)
+                {
+                    limpiar();
+                }
+                else
+                {
+                    limpiar();
+                    PanelRegistro.Visible = false;
+                    CargarDatos();
+                }
+
 
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageBox.Show("Error: " + ex.Message);
+               
             }
         }
+
+
+        // Método para validar correo electrónico
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //validar form
+
+        private List<string> ValidarFormulario()
+        {
+            List<string> errores = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(tbxNombre.Text))
+            {
+                errores.Add("El nombre es obligatorio.");
+            }
+            if (string.IsNullOrWhiteSpace(tbxApellido.Text))
+            {
+                errores.Add("El apellido es obligatorio.");
+            }
+            if (string.IsNullOrWhiteSpace(tbxDni.Text) || !tbxDni.Text.All(char.IsDigit))
+            {
+                errores.Add("El DNI es obligatorio y debe contener solo números.");
+            }
+            if (string.IsNullOrWhiteSpace(tbxCorreo.Text) || !IsValidEmail(tbxCorreo.Text))
+            {
+                errores.Add("El correo electrónico es obligatorio y debe ser válido.");
+            }
+            if (string.IsNullOrWhiteSpace(tbxTelefono.Text) || !tbxTelefono.Text.All(char.IsDigit))
+            {
+                errores.Add("El teléfono es obligatorio y debe contener solo números.");
+            }
+            if (string.IsNullOrWhiteSpace(tbxDireccion.Text))
+            {
+                errores.Add("La dirección es obligatoria.");
+            }
+            if (cbxGenero.SelectedItem == null)
+            {
+                errores.Add("Debe seleccionar un género.");
+            }
+            if (dtpEdad.Value == DateTime.Today)
+            {
+                errores.Add("Debe seleccionar una fecha de nacimiento válida distinta a la actual.");
+            }
+
+            return errores;
+        }
+
+
 
         private void CargarDatos()
         {
@@ -121,7 +206,7 @@ namespace Capa_Presentacion
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == DgvTurno.Columns["Eliminar"].Index)
             {
-                // Mostrar un mensaje de confirmación
+               
                 var confirmResult = MessageBox.Show(
                     "¿Estás seguro de que deseas eliminar este paciente?",
                     "Confirmación de Eliminación",
@@ -129,7 +214,7 @@ namespace Capa_Presentacion
                     MessageBoxIcon.Warning
                 );
 
-                // Verificar si el usuario seleccionó "Sí"
+               
                 if (confirmResult == DialogResult.Yes)
                 {
                     PacienteEliminar(e.RowIndex);
@@ -151,7 +236,7 @@ namespace Capa_Presentacion
 
                         negocio.EliminarPaciente(seleccionado);
 
-                        // Mostrar mensaje de éxito
+                    
                         MessageBox.Show("Paciente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         CargarDatos();
@@ -220,6 +305,15 @@ namespace Capa_Presentacion
                 PacienteNegocio negocio = new PacienteNegocio();
                 Capa_Dominio.Paciente seleccionado = (Capa_Dominio.Paciente)DgvTurno.CurrentRow.DataBoundItem;
 
+
+                List<string> errores = ValidarFormulario();
+
+                if (errores.Count > 0)
+                {
+                    MessageBox.Show(string.Join("\n", errores), "Errores en el formulario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 seleccionado.Nombre = tbxNombre.Text;
                 seleccionado.Apellido = tbxApellido.Text;
                 seleccionado.Dni = tbxDni.Text;
@@ -232,9 +326,9 @@ namespace Capa_Presentacion
 
                 negocio.Modificar(seleccionado);
 
-                // Mostrar mensaje de éxito
                 MessageBox.Show("Paciente modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                PanelRegistro.Visible = false;
                 CargarDatos();
             }
             catch (Exception ex)
@@ -321,13 +415,13 @@ namespace Capa_Presentacion
         {
             try
             {
-                // Verificar que la fila seleccionada es válida
+               
                 if (e.RowIndex >= 0)
                 {
-                    // Obtener la fila seleccionada
+                   
                     DataGridViewRow filaSeleccionada = dgvMed.Rows[e.RowIndex];
 
-                    // Suponiendo que la columna "IdMedico" existe en tu DataGridView
+                   
                     id_Medico = Convert.ToInt32(filaSeleccionada.Cells["IdMedico"].Value);
 
                     //MessageBox.Show("ID Médico seleccionado: " + idMedico.ToString());

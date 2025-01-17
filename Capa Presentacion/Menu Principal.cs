@@ -52,5 +52,13 @@ namespace Capa_Presentacion
             panelPadre.Controls.Add(control);
 
         }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            panelPadre.Controls.Clear();
+            VistaUsuarios control= new VistaUsuarios();
+            control.Dock = DockStyle.Fill;
+            panelPadre.Controls.Add(control);
+        }
     }
 }

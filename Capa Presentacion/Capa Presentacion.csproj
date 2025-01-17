@@ -72,6 +72,12 @@
     <Compile Include="VistaTurno.Designer.cs">
       <DependentUpon>VistaTurno.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaUsuarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VistaUsuarios.Designer.cs">
+      <DependentUpon>VistaUsuarios.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Menu Principal.resx">
       <DependentUpon>Menu Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaTurno.resx">
       <DependentUpon>VistaTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaUsuarios.resx">
+      <DependentUpon>VistaUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

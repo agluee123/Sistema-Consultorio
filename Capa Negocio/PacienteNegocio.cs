@@ -54,7 +54,6 @@ namespace Capa_Negocio
                 {
                     Paciente aux = new Paciente();
                     aux.IdPaciente = (int)lector["idPaciente"];
-
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Apellido = (string)lector["Apellido"];
                     aux.Dni = (string)lector["Dni"];

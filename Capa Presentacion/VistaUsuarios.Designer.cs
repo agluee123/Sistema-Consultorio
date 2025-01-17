@@ -356,9 +356,9 @@
             // 
             this.cbxRol.FormattingEnabled = true;
             this.cbxRol.Items.AddRange(new object[] {
-            "Administrador",
+            "Recepcionista",
             "Medico",
-            "Recepcionista"});
+            "Admin"});
             this.cbxRol.Location = new System.Drawing.Point(215, 220);
             this.cbxRol.Name = "cbxRol";
             this.cbxRol.Size = new System.Drawing.Size(339, 28);

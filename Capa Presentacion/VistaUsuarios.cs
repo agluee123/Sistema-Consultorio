@@ -51,11 +51,6 @@ namespace Capa_Presentacion
 
         private void btnGuardarUsuario_Click(object sender, EventArgs e)
         {
-           
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
             Usuario nuevo = new Usuario();
             UsuarioNegocio negocio = new UsuarioNegocio();
             try
@@ -75,6 +70,13 @@ namespace Capa_Presentacion
 
                 throw ex;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+
+           
 
         }
 

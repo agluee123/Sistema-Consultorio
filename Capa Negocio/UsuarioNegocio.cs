@@ -14,6 +14,7 @@ namespace Capa_Negocio
         {
 
             Acceso_a_datos datos = new Acceso_a_datos();
+
             datos.setearConsulta("INSERT INTO Usuario (Nombre, Dni, Usuario,Contraseña, Rol) " +
                      "VALUES (@Nombre, @Dni, @Usuario, @Contraseña, @Rol)");
 
@@ -50,7 +51,8 @@ namespace Capa_Negocio
                     Usuario aux = new Usuario();
                     aux.IdUsuario = (int)lector["idUsuario"];
                     aux.Nombre = (string)lector["Nombre"];
-                    aux.UsuarioNombre = (string)lector["UsuarioNombre"];
+                    aux.Dni = (string)lector["Dni"];
+                    aux.UsuarioNombre = (string)lector["Usuario"];
                     aux.Contraseña = (string)lector["Contraseña"];
                     aux.Rol = (string)lector["Rol"];
                 

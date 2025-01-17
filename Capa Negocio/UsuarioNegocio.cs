@@ -93,6 +93,27 @@ namespace Capa_Negocio
 
         }
 
+        public void EliminarUsuario(int id_usuario)
+        {
+            Acceso_a_datos datos = new Acceso_a_datos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM Usuario WHERE IdUsuario = @Id");
+                datos.setearParametro("@Id",id_usuario);
+                datos.ejecutarAccion();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al eliminar el Usuario: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
 
 
 

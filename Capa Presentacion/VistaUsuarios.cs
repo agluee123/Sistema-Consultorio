@@ -82,6 +82,36 @@ namespace Capa_Presentacion
                 PanelUsuario.Dock = DockStyle.Fill;
 
             }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == dgvTurno.Columns["Eliminar"].Index)
+            {
+
+                var confirmResult = MessageBox.Show(
+                    "¿Estás seguro de que deseas eliminar este Usuario?",
+                    "Confirmación de Eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                   
+                    try
+                    {
+                        UsuarioNegocio usuario = new UsuarioNegocio();
+                        DataGridViewRow row = dgvUsuarios.Rows[e.RowIndex];
+                        int id_usuario = Convert.ToInt32(row.Cells["IdUsuario"].Value);
+                        usuario.EliminarUsuario(id_usuario);
+                        // Mostrar mensaje de éxito
+                        MessageBox.Show("Usuario eliminado correctamente." , "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        CargarDatos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar el paciente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void ObtenerUsuarioEditar(int rowIndex)
@@ -109,18 +139,16 @@ namespace Capa_Presentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Usuario editar=new Usuario();
-            UsuarioNegocio negocio = new UsuarioNegocio();
+            Usuario editar = (Usuario)dgvUsuarios.CurrentRow.DataBoundItem;
+            UsuarioNegocio negocio=new UsuarioNegocio();
             try
             {
-                //editar.IdUsuario = id_usuario;
-                MessageBox.Show("el id es" + id_usuario);
                 editar.Nombre = tbxNombre.Text;
                 editar.Dni = tbxDni.Text;
                 editar.UsuarioNombre = tbxUsuario.Text;
                 editar.Contraseña = tbxContraseña.Text;
                 editar.Rol = cbxRol.SelectedItem?.ToString();
-
+                
                 negocio.Modificar(editar);
 
             }

@@ -386,8 +386,11 @@ namespace Capa_Presentacion
                     return;
                 }
                 seleccionado.EstadoTurno = cbxEstado.SelectedItem.ToString();
+                string pendiente = "pendiente";
 
-                // Guardar el turno
+                seleccionado.Diagnostico = pendiente;
+
+               
                 negocio.Agregar(seleccionado);
 
                 // Confirmación

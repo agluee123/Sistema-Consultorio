@@ -100,6 +100,37 @@ namespace Capa_Presentacion
                 PanelTurno.Dock = DockStyle.Fill;
 
             }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == dgvTurno.Columns["Eliminar"].Index)
+            {
+                // Mostrar un mensaje de confirmación
+                var confirmResult = MessageBox.Show(
+                    "¿Estás seguro de que deseas eliminar este paciente?",
+                    "Confirmación de Eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                // Verificar si el usuario seleccionó "Sí"
+                if (confirmResult == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        TurnoNegocio turno = new TurnoNegocio();
+                        DataGridViewRow row = dgvTurno.Rows[e.RowIndex];
+                        int Turno = Convert.ToInt32(row.Cells["IdTurno"].Value);
+                        turno.EliminarTurno(Turno);
+                        // Mostrar mensaje de éxito
+                        MessageBox.Show("Paciente eliminado correctamente." + Turno, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        CargarDatos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar el paciente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
 
         }
 

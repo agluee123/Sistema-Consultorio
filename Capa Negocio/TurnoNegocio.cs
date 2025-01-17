@@ -96,5 +96,30 @@ namespace Capa_Negocio
 
         }
 
+        public void EliminarTurno(int IdTurno)
+        {
+            Acceso_a_datos datos = new Acceso_a_datos();
+            try
+            {
+
+                datos.setearConsulta("DELETE FROM Turno WHERE IdTurno = @Id");
+                datos.setearParametro("@Id", IdTurno);
+                datos.ejecutarAccion();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error al eliminar turno: " + ex.Message);
+
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
     }
 }

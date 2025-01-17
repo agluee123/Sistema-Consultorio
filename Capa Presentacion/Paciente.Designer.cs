@@ -738,8 +738,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.PanelTurno);
             this.Controls.Add(this.PanelRegistro);
+            this.Controls.Add(this.PanelTurno);
             this.Controls.Add(this.DgvTurno);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

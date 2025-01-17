@@ -68,6 +68,31 @@ namespace Capa_Negocio
             }
         }
 
+        public void Modificar(Usuario modificar)
+        {
+            Acceso_a_datos datos = new Acceso_a_datos();
+            try
+            {
+                datos.setearConsulta("UPDATE Usuario SET Nombre = @Nombre, Dni = @Dni, Usuario = @Usuario, Contraseña = @Contraseña, Rol = @Rol WHERE IdUsuario = @IdUsuario");
+
+                datos.setearParametro("@IdUsuario", modificar.IdUsuario);
+                datos.setearParametro("@Nombre", modificar.Nombre);
+                datos.setearParametro("@Dni", modificar.Dni);
+                datos.setearParametro("@Usuario", modificar.UsuarioNombre);
+                datos.setearParametro("@Contraseña", modificar.Contraseña);
+                datos.setearParametro("@Rol", modificar.Rol);
+
+                datos.ejecutarAccion();
+
+                datos.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
 
 
 

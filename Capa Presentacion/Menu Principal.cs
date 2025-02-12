@@ -19,23 +19,23 @@ namespace Capa_Presentacion
         public Form1()
         {
             InitializeComponent();
-            PanelSesion.BringToFront();
-            PanelSesion.Dock = DockStyle.Fill;
+            //PanelSesion.BringToFront();
+            //PanelSesion.Dock = DockStyle.Fill;
         }
 
         public Form1(string rol)
         {
             InitializeComponent();
             rolUsuario = rol;
+            ConfigurarPermisos();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             PanelBienvenida.Dock = DockStyle.Fill;
-            ConfigurarPermisos(rolUsuario);
+            //ConfigurarPermisos(rolUsuario);
         }
 
-        
-        private void ConfigurarPermisos(string rol)
+        private void ConfigurarPermisos()
         {
             btnMedico.Visible = false;
             btnPaciente.Visible = false;
@@ -44,7 +44,7 @@ namespace Capa_Presentacion
             btnCerrarSesion.Visible = false;
 
             // Habilitar botones dependiendo del rol
-            if (rol == "Admin")
+            if (rolUsuario == "Admin")
             {
                 btnMedico.Visible = true;     
                 btnPaciente.Visible = true; 
@@ -53,13 +53,13 @@ namespace Capa_Presentacion
                 btnCerrarSesion.Visible=true;
 
             }
-            else if (rol == "Medico")
+            else if (rolUsuario  == "Medico")
             {
                 btnTurno.Visible = true;
                 btnCerrarSesion.Visible = true;
 
             }
-            else if (rol == "Recepcionista")
+            else if (rolUsuario  == "Recepcionista")
             {
                 btnTurno.Visible = true;
                 btnPaciente.Visible = true;
@@ -103,50 +103,23 @@ namespace Capa_Presentacion
             panelPadre.Controls.Add(control);
         }
 
-        private void btnIniciarSesion_Click(object sender, EventArgs e)
-        {
-           UsuarioNegocio negocio = new UsuarioNegocio();
-            string usuario=tbxUsuario.Text;
-            string contraseña=tbxContraseña.Text;
-
-            string resultado = negocio.AutenticarUsuario(usuario, contraseña);
-
-            if (resultado == "Recepcionista" || resultado == "Medico" || resultado=="Admin")
-            {
-                PanelSesion.Visible = false;
-                panelPadre.Visible = true;
-
-                ConfigurarPermisos(resultado);
-
-                MessageBox.Show("Bienvenido, " + resultado);
-
-            }
-            else
-            {
-                MessageBox.Show(resultado);
-            }
-
-        }
-
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            
-            // Mostrar el panel de inicio de sesión
-            PanelSesion.Visible = true;
-            btnMedico.Visible = false;
-            btnPaciente.Visible = false;
-            btnUsuarios.Visible = false;
-            btnTurno.Visible = false;
-            btnCerrarSesion.Visible = false;
-            
+            Application.Restart(); // Ocultar MenuPrincipal
+            IniciarSesion login = new IniciarSesion();
 
 
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                // Si inicia sesión, actualizar el rol y mostrar el menú otra vez
+                string nuevoRol = login.RolUsuario;
+                Form1 nuevoMenu = new Form1(nuevoRol);
+                nuevoMenu.Show();
+            }
 
-            tbxUsuario.Clear();
-            tbxContraseña.Clear();
-
-
-            MessageBox.Show("Has cerrado sesión correctamente.");
+            this.Close(); // Cerrar la instancia actual del formulario
         }
+
+        
     }
 }

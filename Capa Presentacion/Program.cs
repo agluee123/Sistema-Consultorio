@@ -16,7 +16,15 @@ namespace Capa_Presentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Presentacion.Form1());
+
+            IniciarSesion iniciar = new IniciarSesion();
+            DialogResult resultado = iniciar.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                string rolUsuario = iniciar.RolUsuario; // Obtener el rol del usuario autenticado
+                Application.Run(new Form1(rolUsuario)); // Pasar el rol al MenuPrincipal
+            }
         }
     }
 }

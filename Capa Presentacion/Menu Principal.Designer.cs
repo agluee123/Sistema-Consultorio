@@ -36,10 +36,18 @@
             this.btnPaciente = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelPadre = new System.Windows.Forms.Panel();
+            this.PanelSesion = new System.Windows.Forms.Panel();
+            this.btnIniciarSesion = new System.Windows.Forms.Button();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblContraseña = new System.Windows.Forms.Label();
+            this.tbxContraseña = new System.Windows.Forms.TextBox();
+            this.tbxUsuario = new System.Windows.Forms.TextBox();
+            this.lblSesion = new System.Windows.Forms.Label();
             this.PanelBienvenida = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelPadre.SuspendLayout();
+            this.PanelSesion.SuspendLayout();
             this.PanelBienvenida.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,12 +153,80 @@
             // panelPadre
             // 
             this.panelPadre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(40)))));
+            this.panelPadre.Controls.Add(this.PanelSesion);
             this.panelPadre.Controls.Add(this.PanelBienvenida);
             this.panelPadre.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPadre.Location = new System.Drawing.Point(259, 0);
             this.panelPadre.Name = "panelPadre";
             this.panelPadre.Size = new System.Drawing.Size(884, 722);
             this.panelPadre.TabIndex = 1;
+            // 
+            // PanelSesion
+            // 
+            this.PanelSesion.Controls.Add(this.btnIniciarSesion);
+            this.PanelSesion.Controls.Add(this.lblUsuario);
+            this.PanelSesion.Controls.Add(this.lblContraseña);
+            this.PanelSesion.Controls.Add(this.tbxContraseña);
+            this.PanelSesion.Controls.Add(this.tbxUsuario);
+            this.PanelSesion.Controls.Add(this.lblSesion);
+            this.PanelSesion.Location = new System.Drawing.Point(81, 69);
+            this.PanelSesion.Name = "PanelSesion";
+            this.PanelSesion.Size = new System.Drawing.Size(884, 722);
+            this.PanelSesion.TabIndex = 1;
+            // 
+            // btnIniciarSesion
+            // 
+            this.btnIniciarSesion.Location = new System.Drawing.Point(474, 369);
+            this.btnIniciarSesion.Name = "btnIniciarSesion";
+            this.btnIniciarSesion.Size = new System.Drawing.Size(142, 23);
+            this.btnIniciarSesion.TabIndex = 5;
+            this.btnIniciarSesion.Text = "Iniciar Sesion";
+            this.btnIniciarSesion.UseVisualStyleBackColor = true;
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lblUsuario.Location = new System.Drawing.Point(349, 260);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(104, 33);
+            this.lblUsuario.TabIndex = 4;
+            this.lblUsuario.Text = "Usuario:";
+            // 
+            // lblContraseña
+            // 
+            this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lblContraseña.Location = new System.Drawing.Point(309, 311);
+            this.lblContraseña.Name = "lblContraseña";
+            this.lblContraseña.Size = new System.Drawing.Size(144, 33);
+            this.lblContraseña.TabIndex = 3;
+            this.lblContraseña.Text = "Contraseña:";
+            // 
+            // tbxContraseña
+            // 
+            this.tbxContraseña.Location = new System.Drawing.Point(460, 319);
+            this.tbxContraseña.Name = "tbxContraseña";
+            this.tbxContraseña.Size = new System.Drawing.Size(175, 20);
+            this.tbxContraseña.TabIndex = 2;
+            // 
+            // tbxUsuario
+            // 
+            this.tbxUsuario.Location = new System.Drawing.Point(460, 268);
+            this.tbxUsuario.Name = "tbxUsuario";
+            this.tbxUsuario.Size = new System.Drawing.Size(175, 20);
+            this.tbxUsuario.TabIndex = 1;
+            // 
+            // lblSesion
+            // 
+            this.lblSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lblSesion.Location = new System.Drawing.Point(430, 190);
+            this.lblSesion.Name = "lblSesion";
+            this.lblSesion.Size = new System.Drawing.Size(225, 33);
+            this.lblSesion.TabIndex = 0;
+            this.lblSesion.Text = "Iniciar Sesion";
             // 
             // PanelBienvenida
             // 
@@ -171,7 +247,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenido al Sistema de Consultorio";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
@@ -185,6 +260,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panelPadre.ResumeLayout(false);
+            this.PanelSesion.ResumeLayout(false);
+            this.PanelSesion.PerformLayout();
             this.PanelBienvenida.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -201,6 +278,13 @@
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Panel PanelBienvenida;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel PanelSesion;
+        private System.Windows.Forms.Button btnIniciarSesion;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblContraseña;
+        private System.Windows.Forms.TextBox tbxContraseña;
+        private System.Windows.Forms.TextBox tbxUsuario;
+        private System.Windows.Forms.Label lblSesion;
     }
 }
 

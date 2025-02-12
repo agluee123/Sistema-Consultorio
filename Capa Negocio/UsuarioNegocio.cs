@@ -10,6 +10,8 @@ namespace Capa_Negocio
 {
     public class UsuarioNegocio
     {
+        private int intentos = 0;
+        private const int MaxIntentos = 3;
         public void Agregar(Usuario nuevo)
         {
 
@@ -55,7 +57,7 @@ namespace Capa_Negocio
                     aux.UsuarioNombre = (string)lector["Usuario"];
                     aux.Contraseña = (string)lector["Contraseña"];
                     aux.Rol = (string)lector["Rol"];
-                
+
                     lista.Add(aux);
                 }
 
@@ -99,7 +101,7 @@ namespace Capa_Negocio
             try
             {
                 datos.setearConsulta("DELETE FROM Usuario WHERE IdUsuario = @Id");
-                datos.setearParametro("@Id",id_usuario);
+                datos.setearParametro("@Id", id_usuario);
                 datos.ejecutarAccion();
             }
 
@@ -115,7 +117,59 @@ namespace Capa_Negocio
         }
 
 
+        public string AutenticarUsuario(string usuario, string contraseña)
+        {
+            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contraseña))
+                return "Los campos no pueden estar vacíos";
 
+            string rol = ValidarUsuario(usuario, contraseña);
+
+            if (rol != null)
+            {
+                intentos = 0; // Reiniciar intentos si es correcto
+                return rol;
+            }
+            else
+            {
+                intentos++;
+                if (intentos >= MaxIntentos)
+                    return "Cuenta bloqueada por múltiples intentos fallidos";
+
+                return "Usuario o contraseña incorrectos";
+            }
+        }
+
+        private string ValidarUsuario(string usuario, string contraseña)
+        {
+            Acceso_a_datos datos = new Acceso_a_datos();
+
+            try
+            {
+                datos.setearConsulta("SELECT Rol FROM Usuario WHERE Usuario = @Usuario AND Contraseña = @Contraseña");
+                datos.setearParametro("@Usuario", usuario);
+                datos.setearParametro("@Contraseña", contraseña);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    return datos.Lector["Rol"].ToString();
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+
+
+        }
 
     }
 }

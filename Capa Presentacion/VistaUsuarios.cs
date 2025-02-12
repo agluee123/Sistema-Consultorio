@@ -49,6 +49,7 @@ namespace Capa_Presentacion
         private void VistaUsuarios_Load(object sender, EventArgs e)
         {
             CargarDatos();
+            DiseñoDgv(ref dgvUsuarios);
         }
 
         private void btnGuardarUsuario_Click(object sender, EventArgs e)
@@ -157,6 +158,28 @@ namespace Capa_Presentacion
 
                 throw ex;
             }
+        }
+
+        public static void DiseñoDgv(ref DataGridView dgv)
+        {
+
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.RowHeadersVisible = false;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.MultiSelect = false;
+
+
+            dgv.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Transparent;
+            dgv.ColumnHeadersDefaultCellStyle.SelectionForeColor = dgv.ColumnHeadersDefaultCellStyle.ForeColor;
+
+
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

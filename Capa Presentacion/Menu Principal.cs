@@ -1,4 +1,5 @@
-﻿using Capa_Negocio;
+﻿using Capa_Dominio;
+using Capa_Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,34 +30,40 @@ namespace Capa_Presentacion
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            PanelBienvenida.Dock = DockStyle.Fill;  
+            PanelBienvenida.Dock = DockStyle.Fill;
+            ConfigurarPermisos(rolUsuario);
         }
 
         
         private void ConfigurarPermisos(string rol)
         {
-            // Deshabilitar todos los botones inicialmente
-            btnMedico.Enabled = false;
-            btnPaciente.Enabled = false;
-            btnUsuarios.Enabled = false;
-            btnTurno.Enabled = false;    
+            btnMedico.Visible = false;
+            btnPaciente.Visible = false;
+            btnUsuarios.Visible = false;
+            btnTurno.Visible = false;
+            btnCerrarSesion.Visible = false;
 
             // Habilitar botones dependiendo del rol
             if (rol == "Admin")
             {
-                btnMedico.Enabled = true;     
-                btnPaciente.Enabled = true; 
-                btnTurno.Enabled = true;
-                btnUsuarios.Enabled = true;
+                btnMedico.Visible = true;     
+                btnPaciente.Visible = true; 
+                btnTurno.Visible = true;
+                btnUsuarios.Visible = true;
+                btnCerrarSesion.Visible=true;
+
             }
             else if (rol == "Medico")
             {
-                btnTurno.Enabled = true;       // El Medico puede acceder a los turnos
+                btnTurno.Visible = true;
+                btnCerrarSesion.Visible = true;
+
             }
             else if (rol == "Recepcionista")
             {
-                //btnTurno.Enabled = true;
-                //btnPaciente.Enabled = true;
+                btnTurno.Visible = true;
+                btnPaciente.Visible = true;
+                btnCerrarSesion.Visible = true;
                 // El Recepcionista tiene permisos limitados
                 // No habilitamos botones adicionales
             }
@@ -119,7 +126,27 @@ namespace Capa_Presentacion
                 MessageBox.Show(resultado);
             }
 
+        }
 
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            
+            // Mostrar el panel de inicio de sesión
+            PanelSesion.Visible = true;
+            btnMedico.Visible = false;
+            btnPaciente.Visible = false;
+            btnUsuarios.Visible = false;
+            btnTurno.Visible = false;
+            btnCerrarSesion.Visible = false;
+            
+
+
+
+            tbxUsuario.Clear();
+            tbxContraseña.Clear();
+
+
+            MessageBox.Show("Has cerrado sesión correctamente.");
         }
     }
 }

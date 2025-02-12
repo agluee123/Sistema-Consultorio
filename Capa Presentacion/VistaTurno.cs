@@ -325,5 +325,9 @@ namespace Capa_Presentacion
                 MessageBox.Show($"Error al actualizar el turno: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+
     }
 }

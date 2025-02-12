@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnTurno = new System.Windows.Forms.Button();
             this.btnMedico = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.btnCerrarSesion);
             this.panel1.Controls.Add(this.btnUsuarios);
             this.panel1.Controls.Add(this.btnTurno);
             this.panel1.Controls.Add(this.btnMedico);
@@ -65,6 +67,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(259, 722);
             this.panel1.TabIndex = 0;
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.LightCoral;
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.Black;
+            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 421);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(259, 81);
+            this.btnCerrarSesion.TabIndex = 4;
+            this.btnCerrarSesion.Text = "Cerrar Sesion";
+            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // btnUsuarios
             // 
@@ -169,14 +189,14 @@
             this.PanelSesion.Controls.Add(this.tbxContraseña);
             this.PanelSesion.Controls.Add(this.tbxUsuario);
             this.PanelSesion.Controls.Add(this.lblSesion);
-            this.PanelSesion.Location = new System.Drawing.Point(81, 69);
+            this.PanelSesion.Location = new System.Drawing.Point(41, 50);
             this.PanelSesion.Name = "PanelSesion";
             this.PanelSesion.Size = new System.Drawing.Size(884, 722);
             this.PanelSesion.TabIndex = 1;
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(474, 369);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(433, 310);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(142, 23);
             this.btnIniciarSesion.TabIndex = 5;
@@ -188,7 +208,7 @@
             // 
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lblUsuario.Location = new System.Drawing.Point(349, 260);
+            this.lblUsuario.Location = new System.Drawing.Point(308, 201);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(104, 33);
             this.lblUsuario.TabIndex = 4;
@@ -198,7 +218,7 @@
             // 
             this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lblContraseña.Location = new System.Drawing.Point(309, 311);
+            this.lblContraseña.Location = new System.Drawing.Point(268, 252);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(144, 33);
             this.lblContraseña.TabIndex = 3;
@@ -206,14 +226,14 @@
             // 
             // tbxContraseña
             // 
-            this.tbxContraseña.Location = new System.Drawing.Point(460, 319);
+            this.tbxContraseña.Location = new System.Drawing.Point(419, 260);
             this.tbxContraseña.Name = "tbxContraseña";
             this.tbxContraseña.Size = new System.Drawing.Size(175, 20);
             this.tbxContraseña.TabIndex = 2;
             // 
             // tbxUsuario
             // 
-            this.tbxUsuario.Location = new System.Drawing.Point(460, 268);
+            this.tbxUsuario.Location = new System.Drawing.Point(419, 209);
             this.tbxUsuario.Name = "tbxUsuario";
             this.tbxUsuario.Size = new System.Drawing.Size(175, 20);
             this.tbxUsuario.TabIndex = 1;
@@ -222,7 +242,7 @@
             // 
             this.lblSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.lblSesion.Location = new System.Drawing.Point(430, 190);
+            this.lblSesion.Location = new System.Drawing.Point(361, 139);
             this.lblSesion.Name = "lblSesion";
             this.lblSesion.Size = new System.Drawing.Size(225, 33);
             this.lblSesion.TabIndex = 0;
@@ -285,6 +305,7 @@
         private System.Windows.Forms.TextBox tbxContraseña;
         private System.Windows.Forms.TextBox tbxUsuario;
         private System.Windows.Forms.Label lblSesion;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }
 

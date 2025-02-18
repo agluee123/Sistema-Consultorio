@@ -14,8 +14,8 @@ namespace Capa_Negocio
         {
 
             Acceso_a_datos datos = new Acceso_a_datos();
-            datos.setearConsulta("INSERT INTO Turno (Fecha,Hora, MotivoConsulta,EstadoTurno,MedicoId,PacienteId) " +
-                     "VALUES (@Fecha, @Hora, @MotivoConsulta, @EstadoTurno, @MedicoId, @PacienteId)");
+            datos.setearConsulta("INSERT INTO Turno (Fecha,Hora, MotivoConsulta,EstadoTurno,MedicoId,PacienteId,Diagnostico) " +
+                     "VALUES (@Fecha, @Hora, @MotivoConsulta, @EstadoTurno, @MedicoId, @PacienteId,@Diagnostico)");
 
             datos.setearParametro("@Fecha", nuevo.Fecha);
             datos.setearParametro("@Hora", nuevo.Hora);
@@ -23,6 +23,7 @@ namespace Capa_Negocio
             datos.setearParametro("@EstadoTurno", nuevo.EstadoTurno);
             datos.setearParametro("@MedicoId", nuevo.MedicoId);
             datos.setearParametro("@PacienteId", nuevo.PacienteId);
+            datos.setearParametro("@Diagnostico", "Diagnostico Pendiente");
 
 
             datos.ejecutarAccion();

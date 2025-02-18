@@ -355,6 +355,7 @@
             // 
             // cbxRol
             // 
+            this.cbxRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRol.FormattingEnabled = true;
             this.cbxRol.Items.AddRange(new object[] {
             "Recepcionista",

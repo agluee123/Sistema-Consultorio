@@ -274,9 +274,11 @@
             // 
             // cbxEstado
             // 
+            this.cbxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstado.FormattingEnabled = true;
             this.cbxEstado.Items.AddRange(new object[] {
-            "Pendiente"});
+            "Pendiente",
+            "Atendido"});
             this.cbxEstado.Location = new System.Drawing.Point(219, 302);
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(339, 28);

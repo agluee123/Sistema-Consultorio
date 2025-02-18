@@ -151,6 +151,9 @@ namespace Capa_Presentacion
                 editar.Rol = cbxRol.SelectedItem?.ToString();
                 
                 negocio.Modificar(editar);
+                MessageBox.Show("Usuario modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                PanelUsuario.Visible=false; 
+                CargarDatos();
 
             }
             catch (Exception ex)

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Acceso a datos.cs" />
     <Compile Include="DisponibilidadNegocio.cs" />
+    <Compile Include="HistoriaCliniNegocio.cs" />
     <Compile Include="MedicoNegocio.cs" />
     <Compile Include="PacienteNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

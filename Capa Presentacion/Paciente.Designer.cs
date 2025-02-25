@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Paciente));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHistoriaClinica = new System.Windows.Forms.Button();
             this.btnTurno = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -84,7 +85,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelRegistro.SuspendLayout();
@@ -98,7 +98,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnHistoriaClinica);
             this.panel1.Controls.Add(this.btnTurno);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -109,6 +109,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 79);
             this.panel1.TabIndex = 0;
+            // 
+            // btnHistoriaClinica
+            // 
+            this.btnHistoriaClinica.BackColor = System.Drawing.Color.Black;
+            this.btnHistoriaClinica.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHistoriaClinica.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnHistoriaClinica.FlatAppearance.BorderSize = 0;
+            this.btnHistoriaClinica.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnHistoriaClinica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btnHistoriaClinica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoriaClinica.Image = ((System.Drawing.Image)(resources.GetObject("btnHistoriaClinica.Image")));
+            this.btnHistoriaClinica.Location = new System.Drawing.Point(496, 0);
+            this.btnHistoriaClinica.Name = "btnHistoriaClinica";
+            this.btnHistoriaClinica.Size = new System.Drawing.Size(108, 79);
+            this.btnHistoriaClinica.TabIndex = 5;
+            this.btnHistoriaClinica.UseVisualStyleBackColor = false;
+            this.btnHistoriaClinica.Click += new System.EventHandler(this.btnHistoriaClinica_Click);
             // 
             // btnTurno
             // 
@@ -737,22 +754,6 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Fecha:";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(496, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 79);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // Paciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -837,6 +838,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.DataGridView dgvMed;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnHistoriaClinica;
     }
 }

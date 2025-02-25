@@ -36,8 +36,8 @@ namespace Capa_Presentacion
         {
             PanelRegistro.Visible = true;
             PanelRegistro.Dock = DockStyle.Fill;
-            btnGuardar.Visible= true;
-            btnEditar.Visible= false;
+            btnGuardar.Visible = true;
+            btnEditar.Visible = false;
             limpiar();
 
         }
@@ -45,10 +45,10 @@ namespace Capa_Presentacion
         private void limpiar()
         {
             tbxNombre.Clear();
-            tbxApellido.Clear();  
-            tbxDni.Clear(); 
+            tbxApellido.Clear();
+            tbxDni.Clear();
             tbxCorreo.Clear();
-            tbxTelefono.Clear();    
+            tbxTelefono.Clear();
             tbxDireccion.Clear();
             tbxCondicion.Clear();
             cbxGenero.SelectedIndex = -1;
@@ -60,8 +60,8 @@ namespace Capa_Presentacion
         }
         private void Paciente_Load(object sender, EventArgs e)
         {
-            PanelRegistro.Visible= false;
-            PanelTurno.Visible= false;  
+            PanelRegistro.Visible = false;
+            PanelTurno.Visible = false;
             DiseñoDgv(ref DgvTurno);
             CargarDatos();
             maskedTextBox1.Mask = "00:00";  // Formato HH:mm
@@ -71,8 +71,8 @@ namespace Capa_Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Capa_Dominio.Paciente NuevoPaciente=new Capa_Dominio.Paciente();
-            PacienteNegocio negocio =new PacienteNegocio();
+            Capa_Dominio.Paciente NuevoPaciente = new Capa_Dominio.Paciente();
+            PacienteNegocio negocio = new PacienteNegocio();
             try
             {
 
@@ -84,15 +84,15 @@ namespace Capa_Presentacion
                     return;
                 }
 
-                NuevoPaciente.Nombre=tbxNombre.Text; 
-                NuevoPaciente.Apellido=tbxApellido.Text; 
-                NuevoPaciente.Dni=tbxDni.Text;
-                NuevoPaciente.Correo=tbxCorreo.Text;
-                NuevoPaciente.NumeroTel=tbxTelefono.Text;
-                NuevoPaciente.Direccion=tbxDireccion.Text;
-                NuevoPaciente.Genero=cbxGenero.SelectedItem?.ToString();
+                NuevoPaciente.Nombre = tbxNombre.Text;
+                NuevoPaciente.Apellido = tbxApellido.Text;
+                NuevoPaciente.Dni = tbxDni.Text;
+                NuevoPaciente.Correo = tbxCorreo.Text;
+                NuevoPaciente.NumeroTel = tbxTelefono.Text;
+                NuevoPaciente.Direccion = tbxDireccion.Text;
+                NuevoPaciente.Genero = cbxGenero.SelectedItem?.ToString();
                 NuevoPaciente.FechaNacimiento = dtpEdad.Value;
-                NuevoPaciente.CondicionSalud=tbxCondicion.Text;    
+                NuevoPaciente.CondicionSalud = tbxCondicion.Text;
                 negocio.Agregar(NuevoPaciente);
 
                 MessageBox.Show("Paciente agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,7 +119,7 @@ namespace Capa_Presentacion
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-               
+
             }
         }
 
@@ -202,11 +202,11 @@ namespace Capa_Presentacion
             if (e.RowIndex >= 0 && e.ColumnIndex == DgvTurno.Columns["EditarP"].Index)
             {
                 ObtenerPacientesEditar(e.RowIndex);
-                   
+
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == DgvTurno.Columns["Eliminar"].Index)
             {
-               
+
                 var confirmResult = MessageBox.Show(
                     "¿Estás seguro de que deseas eliminar este paciente?",
                     "Confirmación de Eliminación",
@@ -214,7 +214,7 @@ namespace Capa_Presentacion
                     MessageBoxIcon.Warning
                 );
 
-               
+
                 if (confirmResult == DialogResult.Yes)
                 {
                     PacienteEliminar(e.RowIndex);
@@ -236,7 +236,7 @@ namespace Capa_Presentacion
 
                         negocio.EliminarPaciente(seleccionado);
 
-                    
+
                         MessageBox.Show("Paciente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         CargarDatos();
@@ -251,9 +251,9 @@ namespace Capa_Presentacion
             else if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = DgvTurno.Rows[e.RowIndex];
-                id_Paciente= Convert.ToInt32(row.Cells["IdPaciente"].Value);
+                id_Paciente = Convert.ToInt32(row.Cells["IdPaciente"].Value);
             }
-            
+
         }
 
         private void ObtenerPacientesEditar(int rowIndex)
@@ -275,7 +275,7 @@ namespace Capa_Presentacion
                 btnGuardar.Visible = false;
                 btnEditar.Visible = true;
                 PanelRegistro.Visible = true;
-                
+
             }
             catch (Exception ex)
             {
@@ -391,11 +391,11 @@ namespace Capa_Presentacion
             }
 
         }
-            
+
         private void ListarMedico()
         {
 
-        
+
             try
             {
                 var listaMedicos = new MedicoNegocio().listar();
@@ -415,13 +415,13 @@ namespace Capa_Presentacion
         {
             try
             {
-               
+
                 if (e.RowIndex >= 0)
                 {
-                   
+
                     DataGridViewRow filaSeleccionada = dgvMed.Rows[e.RowIndex];
 
-                   
+
                     id_Medico = Convert.ToInt32(filaSeleccionada.Cells["IdMedico"].Value);
 
                     //MessageBox.Show("ID Médico seleccionado: " + idMedico.ToString());
@@ -484,7 +484,7 @@ namespace Capa_Presentacion
 
                 seleccionado.Diagnostico = pendiente;
 
-               
+
                 negocio.Agregar(seleccionado);
 
                 // Confirmación
@@ -497,7 +497,63 @@ namespace Capa_Presentacion
 
         }
 
+        private void btnHistoriaClinica_Click(object sender, EventArgs e)
+        {
+            if (id_Paciente > 0)
+            {
+         
 
+                TurnoNegocio turno = new TurnoNegocio();
+                MedicoNegocio medico = new MedicoNegocio();
+                PacienteNegocio paciente = new PacienteNegocio();
+
+                List<Turno> turnos = turno.listar();
+                List<Medico> ListaMedico = medico.listar();
+                List<Capa_Dominio.Paciente> ListaPaciente = paciente.listar();
+
+
+                    var listaFiltrada = turnos
+                   .Where(t => t.PacienteId == id_Paciente)
+                   .Select(t => new
+                   {
+                       t.IdTurno,
+                       t.EstadoTurno,
+                       t.Hora,
+
+                       Fecha = t.Fecha.ToString("yyyy-MM-dd"),
+                       Medico = ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Nombre + " " +
+                    ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Apellido + " " +
+                    ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Especialidad ?? "Sin médico",
+                       Paciente = ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Nombre + " " +
+                       ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Apellido ?? "Sin paciente",
+                       MotivoConsulta = string.IsNullOrWhiteSpace(t.MotivoConsulta) ? "Sin motivo especificado" : t.MotivoConsulta,
+                       Diagnostico = string.IsNullOrWhiteSpace(t.Diagnostico) ? "Diagnostico Pendiente" : t.Diagnostico,
+                   }).ToList();
+
+
+                if (listaFiltrada.Any()) 
+                {
+                    DgvTurno.DataSource = listaFiltrada;
+                }
+                else
+                {
+                    MessageBox.Show("El paciente no tiene historia clinica");
+                    CargarDatos();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un paciente primero.");
+            }
+        }
+
+
+
+       
+
+
+  
 
     }
 

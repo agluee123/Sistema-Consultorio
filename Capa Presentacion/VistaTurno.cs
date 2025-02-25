@@ -35,24 +35,24 @@ namespace Capa_Presentacion
                 List<Medico> ListaMedico = medico.listar();
                 List<Capa_Dominio.Paciente> ListaPaciente = paciente.listar();
 
-                var listaCombinada = turnos.Select(t => new
-                {
-                    t.IdTurno,
-                    t.EstadoTurno,
-                    t.Hora,
-                    
-                    Fecha = t.Fecha.ToString("yyyy-MM-dd"),
-                    Medico = ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Nombre + " " +
+                    var listaCombinada = turnos.Select(t => new
+                    {
+                        t.IdTurno,
+                        t.EstadoTurno,
+                        t.Hora,
+
+                        Fecha = t.Fecha.ToString("yyyy-MM-dd"),
+                        Medico = ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Nombre + " " +
                     ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Apellido + " " +
                     ListaMedico.FirstOrDefault(m => m.IdMedico == t.MedicoId)?.Especialidad ?? "Sin médico",
-                    Paciente = ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Nombre + " " +
+                        Paciente = ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Nombre + " " +
                        ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Apellido ?? "Sin paciente",
-                    MotivoConsulta = string.IsNullOrWhiteSpace(t.MotivoConsulta) ? "Sin motivo especificado" : t.MotivoConsulta,
-                    Diagnostico = string.IsNullOrWhiteSpace(t.Diagnostico) ? "Diagnostico Pendiente" : t.Diagnostico,
-                }).ToList();
+                        MotivoConsulta = string.IsNullOrWhiteSpace(t.MotivoConsulta) ? "Sin motivo especificado" : t.MotivoConsulta,
+                        Diagnostico = string.IsNullOrWhiteSpace(t.Diagnostico) ? "Diagnostico Pendiente" : t.Diagnostico,
+                    }).ToList();
 
 
-                dgvTurno.DataSource = listaCombinada;
+                    dgvTurno.DataSource = listaCombinada;
             }
             catch (Exception ex)
             {

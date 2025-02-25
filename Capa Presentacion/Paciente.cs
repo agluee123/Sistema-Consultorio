@@ -481,19 +481,32 @@ namespace Capa_Presentacion
                 }
                 seleccionado.EstadoTurno = cbxEstado.SelectedItem.ToString();
                 string pendiente = "pendiente";
-
                 seleccionado.Diagnostico = pendiente;
 
+                // Verificar si el médico ya tiene un turno en la misma fecha y hora
+                var turnoExistente = negocio.listar()
+                    .FirstOrDefault(t => t.MedicoId == seleccionado.MedicoId &&
+                                         t.Fecha.Date == seleccionado.Fecha.Date &&
+                                         t.Hora == seleccionado.Hora);
 
+                if (turnoExistente != null)
+                {
+                   
+                    MessageBox.Show("La hora seleccionada ya está ocupada para este médico. Por favor, elige otra hora.", "Error de Disponibilidad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                
                 negocio.Agregar(seleccionado);
 
-                // Confirmación
+               
                 MessageBox.Show("El turno se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar el turno: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
         }
 

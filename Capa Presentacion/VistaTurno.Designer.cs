@@ -191,7 +191,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.panel2.Location = new System.Drawing.Point(221, 372);
+            this.panel2.Location = new System.Drawing.Point(221, 479);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(339, 1);
             this.panel2.TabIndex = 20;
@@ -203,8 +203,9 @@
             this.tbxDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxDiagnostico.ForeColor = System.Drawing.SystemColors.Window;
             this.tbxDiagnostico.Location = new System.Drawing.Point(221, 347);
+            this.tbxDiagnostico.Multiline = true;
             this.tbxDiagnostico.Name = "tbxDiagnostico";
-            this.tbxDiagnostico.Size = new System.Drawing.Size(339, 19);
+            this.tbxDiagnostico.Size = new System.Drawing.Size(339, 126);
             this.tbxDiagnostico.TabIndex = 19;
             // 
             // lblDiagnostio
@@ -249,7 +250,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnModificar);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(222, 422);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(222, 500);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(339, 79);
             this.flowLayoutPanel2.TabIndex = 13;

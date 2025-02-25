@@ -14,8 +14,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Capa_Presentacion
 {
+
     public partial class Paciente : UserControl
     {
+
         private BindingSource bindingSource = new BindingSource();
         int id_Paciente;
         int id_Medico;
@@ -528,6 +530,7 @@ namespace Capa_Presentacion
                        ListaPaciente.FirstOrDefault(p => p.IdPaciente == t.PacienteId)?.Apellido ?? "Sin paciente",
                        MotivoConsulta = string.IsNullOrWhiteSpace(t.MotivoConsulta) ? "Sin motivo especificado" : t.MotivoConsulta,
                        Diagnostico = string.IsNullOrWhiteSpace(t.Diagnostico) ? "Diagnostico Pendiente" : t.Diagnostico,
+                       IdPaciente=id_Paciente,
                    }).ToList();
 
 
@@ -548,12 +551,37 @@ namespace Capa_Presentacion
             }
         }
 
+        public void DeshabilitarBotonesPorRol(string rol)
+        {
+            if (rol == "Recepcionista")
+            {
+                btnHistoriaClinica.Enabled = false; // Deshabilita el botón
+            }
+        }
+
+        public void DeshabilitarBotones(string rol)
+        {
+            if (rol == "Recepcionista")
+            {
+                btnHistoriaClinica.Visible = false; // Deshabilitar botón de Historia Clínica
+            }
+            else if (rol == "Medico")
+            {
+                DgvTurno.Columns["EditarP"].Visible = false; // Ocultar la columna específica
+                DgvTurno.Columns["Eliminar"].Visible = false;
+                btnAgregar.Visible = false; 
+                btnTurno.Visible = false;   
+            }
+        
+
+        }
 
 
-       
 
 
-  
+
+
+
 
     }
 

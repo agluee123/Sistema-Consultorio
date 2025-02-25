@@ -57,6 +57,7 @@ namespace Capa_Presentacion
             {
                 btnTurno.Visible = true;
                 btnCerrarSesion.Visible = true;
+                btnPaciente.Visible=true;
 
             }
             else if (rolUsuario  == "Recepcionista")
@@ -66,8 +67,20 @@ namespace Capa_Presentacion
                 btnCerrarSesion.Visible = true;
                 // El Recepcionista tiene permisos limitados
                 // No habilitamos botones adicionales
+            } 
+        }
+
+        private void ConfigurarPermisosEnControles()
+        {
+            foreach (Control control in panelPadre.Controls) // Recorremos los controles dentro del Panel
+            {
+                if (control is Paciente pacienteControl) // Verificamos si es el UserControl Paciente
+                {
+                    pacienteControl.DeshabilitarBotones(rolUsuario); // Llamamos al método del UserControl
+                }
             }
         }
+
 
         private void btnPaciente_Click(object sender, EventArgs e)
         {
@@ -75,7 +88,11 @@ namespace Capa_Presentacion
             Paciente control = new Paciente();
             control.Dock = DockStyle.Fill;
             panelPadre.Controls.Add(control);
+
+            // 🔹 Aplicar permisos en el UserControl recién agregado
+            control.DeshabilitarBotones(rolUsuario);
         }
+
 
         private void btnMedico_Click(object sender, EventArgs e)
         {

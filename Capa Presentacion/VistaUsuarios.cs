@@ -184,5 +184,26 @@ namespace Capa_Presentacion
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
+
+        private void tbxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+            List<Usuario> lista = negocio.listar();
+            List<Usuario> listaFiltrada;
+            string filtro = tbxBuscar.Text.ToUpper(); // Convertir el filtro a mayúsculas una vez
+
+            if (filtro.Length >= 1)
+            {
+                listaFiltrada = lista.FindAll(x =>
+                 x.Nombre.ToUpper().Contains(filtro) || x.Rol.ToString().Contains(filtro)); // Filtrar por nombre que contiene el filtro
+
+            }
+            else
+            {
+                listaFiltrada = lista;
+            }
+
+            dgvUsuarios.DataSource = listaFiltrada;
+        }
     }
 }

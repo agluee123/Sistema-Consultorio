@@ -157,13 +157,10 @@ namespace Capa_Presentacion
                         DisponibilidadNegocio negocioDis = new DisponibilidadNegocio();
                         negocioDis.EliminarDisponibilidadMedico(id_medico);
 
-
                         MedicoNegocio negocio = new MedicoNegocio();
                         negocio.Eliminar(new Medico { IdMedico = id_medico });
 
-
                         MessageBox.Show("Médico eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
 
                         CargarDatos();
                     }
@@ -203,27 +200,35 @@ namespace Capa_Presentacion
         {
             try
             {
+
                 MedicoNegocio negocio = new MedicoNegocio();
-                Medico seleccionado =(Medico)dgvMedico.CurrentRow.DataBoundItem;
-                DisponibilidadNegocio disponibilidad=new DisponibilidadNegocio();
-                Disponibilidad Seleccionado=(Disponibilidad)dgvMedico.CurrentRow.DataBoundItem;
-        
-                seleccionado.Nombre = tbxNombre.Text;
-                seleccionado.Apellido = tbxApellido.Text;
-                seleccionado.Matricula = tbxMatricula.Text;
-                seleccionado.Especialidad = tbxEspecialidad.Text;
-                
+
+
+                Medico seleccionado = new Medico
+                {
+                    IdMedico = Convert.ToInt32(dgvMedico.CurrentRow.Cells[2].Value),
+                    Nombre = tbxNombre.Text,
+                    Apellido = tbxApellido.Text,
+                    Matricula = tbxMatricula.Text,
+                    Especialidad = tbxEspecialidad.Text
+                };
+
+
                 negocio.Modificar(seleccionado);
 
-                MessageBox.Show("Medico modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Médico modificado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 CargarDatos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al modificar Medico: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MessageBox.Show("Error al modificar Médico: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+    
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -282,7 +287,6 @@ namespace Capa_Presentacion
         }
 
         
-      
          private void DiasMedico()
          {
             DisponibilidadNegocio negocio = new DisponibilidadNegocio();
@@ -291,7 +295,6 @@ namespace Capa_Presentacion
 
 
             string diasMensaje = "Días disponibles para el médico:\n" + string.Join(", ", diasDisponibles);
-            MessageBox.Show(diasMensaje, "Debug: DiasMedico");
 
 
             foreach (string dia in diasDisponibles)
@@ -307,10 +310,28 @@ namespace Capa_Presentacion
             if (diasDisponibles.Contains("Viernes")) ChViernes.Checked = true;
             if (diasDisponibles.Contains("Sábado")) ChSabado.Checked = true;
             if (diasDisponibles.Contains("Domingo")) ChDomingo.Checked = true;
-          }
+         }
 
+        private void tbxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            MedicoNegocio negocio = new MedicoNegocio();
+            List<Medico> lista = negocio.listar();
+            List<Medico> listaFiltrada;
+            string filtro = tbxBuscar.Text.ToUpper(); // Convertir el filtro a mayúsculas una vez
 
-     
+            if (filtro.Length >= 1)
+            {
+                listaFiltrada = lista.FindAll(x =>
+                    x.Nombre.ToUpper().Contains(filtro) || x.Matricula.ToString().Contains(filtro)
+                    || x.Especialidad.ToString().Contains(filtro)); // Filtrar por nombre que contiene el filtro
 
+            }
+            else
+            {
+                listaFiltrada = lista;
+            }
+
+            dgvMedico.DataSource = listaFiltrada;
+        }
     }
 }

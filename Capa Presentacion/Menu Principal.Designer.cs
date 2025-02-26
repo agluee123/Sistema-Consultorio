@@ -72,7 +72,7 @@
             this.btnCerrarSesion.Location = new System.Drawing.Point(0, 421);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(259, 81);
-            this.btnCerrarSesion.TabIndex = 4;
+            this.btnCerrarSesion.TabIndex = 5;
             this.btnCerrarSesion.Text = "Cerrar Sesion";
             this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCerrarSesion.UseVisualStyleBackColor = false;
@@ -91,7 +91,7 @@
             this.btnUsuarios.Location = new System.Drawing.Point(0, 340);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(259, 81);
-            this.btnUsuarios.TabIndex = 3;
+            this.btnUsuarios.TabIndex = 4;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUsuarios.UseVisualStyleBackColor = false;
@@ -110,7 +110,7 @@
             this.btnTurno.Location = new System.Drawing.Point(0, 259);
             this.btnTurno.Name = "btnTurno";
             this.btnTurno.Size = new System.Drawing.Size(259, 81);
-            this.btnTurno.TabIndex = 2;
+            this.btnTurno.TabIndex = 3;
             this.btnTurno.Text = "Turnos";
             this.btnTurno.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTurno.UseVisualStyleBackColor = false;
@@ -129,7 +129,7 @@
             this.btnMedico.Location = new System.Drawing.Point(0, 179);
             this.btnMedico.Name = "btnMedico";
             this.btnMedico.Size = new System.Drawing.Size(259, 80);
-            this.btnMedico.TabIndex = 1;
+            this.btnMedico.TabIndex = 2;
             this.btnMedico.Text = "Medicos";
             this.btnMedico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMedico.UseVisualStyleBackColor = false;
@@ -148,7 +148,7 @@
             this.btnPaciente.Location = new System.Drawing.Point(0, 100);
             this.btnPaciente.Name = "btnPaciente";
             this.btnPaciente.Size = new System.Drawing.Size(259, 79);
-            this.btnPaciente.TabIndex = 0;
+            this.btnPaciente.TabIndex = 1;
             this.btnPaciente.Text = "Pacientes";
             this.btnPaciente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPaciente.UseVisualStyleBackColor = false;

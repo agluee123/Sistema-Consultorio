@@ -26,6 +26,7 @@ namespace Capa_Presentacion
         private void IniciarSesion_Load(object sender, EventArgs e)
         {
             this.Show();
+            tbxContraseña.UseSystemPasswordChar = true;
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)

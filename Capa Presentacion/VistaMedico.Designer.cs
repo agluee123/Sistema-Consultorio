@@ -112,6 +112,7 @@
             this.tbxBuscar.Name = "tbxBuscar";
             this.tbxBuscar.Size = new System.Drawing.Size(339, 19);
             this.tbxBuscar.TabIndex = 5;
+            this.tbxBuscar.TextChanged += new System.EventHandler(this.tbxBuscar_TextChanged);
             // 
             // btnAgregar
             // 

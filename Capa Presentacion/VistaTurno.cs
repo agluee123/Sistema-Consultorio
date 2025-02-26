@@ -347,9 +347,25 @@ namespace Capa_Presentacion
 
         }
 
+        private void tbxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> lista = negocio.listar();
+            List<Turno> listaFiltrada;
+            string filtro = tbxBuscar.Text.ToUpper(); // Convertir el filtro a mayúsculas una vez
 
+            if (filtro.Length >= 1)
+            {
+                listaFiltrada = lista.FindAll(x =>
+                 x.MotivoConsulta.ToUpper().Contains(filtro) || x.Paciente.ToString().Contains(filtro) ||x.EstadoTurno.ToUpper().Contains(filtro)); // Filtrar por nombre que contiene el filtro
 
+            }
+            else
+            {
+                listaFiltrada = lista;
+            }
 
-
+            dgvTurno.DataSource = listaFiltrada;
+        }
     }
 }

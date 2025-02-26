@@ -41,7 +41,7 @@
             this.btnIniciarSesion.Location = new System.Drawing.Point(359, 260);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(142, 23);
-            this.btnIniciarSesion.TabIndex = 11;
+            this.btnIniciarSesion.TabIndex = 3;
             this.btnIniciarSesion.Text = "Iniciar Sesion";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
             this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
@@ -53,7 +53,7 @@
             this.lblUsuario.Location = new System.Drawing.Point(241, 164);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(104, 33);
-            this.lblUsuario.TabIndex = 10;
+            this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Usuario:";
             // 
             // lblContraseña
@@ -63,7 +63,7 @@
             this.lblContraseña.Location = new System.Drawing.Point(201, 208);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(144, 33);
-            this.lblContraseña.TabIndex = 9;
+            this.lblContraseña.TabIndex = 0;
             this.lblContraseña.Text = "Contraseña:";
             // 
             // tbxContraseña
@@ -71,14 +71,14 @@
             this.tbxContraseña.Location = new System.Drawing.Point(352, 216);
             this.tbxContraseña.Name = "tbxContraseña";
             this.tbxContraseña.Size = new System.Drawing.Size(175, 20);
-            this.tbxContraseña.TabIndex = 8;
+            this.tbxContraseña.TabIndex = 2;
             // 
             // tbxUsuario
             // 
             this.tbxUsuario.Location = new System.Drawing.Point(352, 172);
             this.tbxUsuario.Name = "tbxUsuario";
             this.tbxUsuario.Size = new System.Drawing.Size(175, 20);
-            this.tbxUsuario.TabIndex = 7;
+            this.tbxUsuario.TabIndex = 1;
             // 
             // lblSesion
             // 
@@ -87,7 +87,7 @@
             this.lblSesion.Location = new System.Drawing.Point(299, 102);
             this.lblSesion.Name = "lblSesion";
             this.lblSesion.Size = new System.Drawing.Size(225, 33);
-            this.lblSesion.TabIndex = 6;
+            this.lblSesion.TabIndex = 0;
             this.lblSesion.Text = "Iniciar Sesion";
             // 
             // IniciarSesion

@@ -189,6 +189,7 @@
             this.tbxBuscar.Name = "tbxBuscar";
             this.tbxBuscar.Size = new System.Drawing.Size(339, 19);
             this.tbxBuscar.TabIndex = 0;
+            this.tbxBuscar.TextChanged += new System.EventHandler(this.tbxBuscar_TextChanged);
             // 
             // PanelRegistro
             // 
@@ -220,7 +221,7 @@
             this.PanelRegistro.Controls.Add(this.label1);
             this.PanelRegistro.Controls.Add(this.lblApellido);
             this.PanelRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanelRegistro.Location = new System.Drawing.Point(93, 138);
+            this.PanelRegistro.Location = new System.Drawing.Point(144, 3);
             this.PanelRegistro.Name = "PanelRegistro";
             this.PanelRegistro.Size = new System.Drawing.Size(739, 512);
             this.PanelRegistro.TabIndex = 3;
@@ -572,6 +573,7 @@
             // PanelTurno
             // 
             this.PanelTurno.BackColor = System.Drawing.Color.Black;
+            this.PanelTurno.Controls.Add(this.PanelRegistro);
             this.PanelTurno.Controls.Add(this.dgvMed);
             this.PanelTurno.Controls.Add(this.maskedTextBox1);
             this.PanelTurno.Controls.Add(this.label2);
@@ -758,7 +760,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.PanelRegistro);
             this.Controls.Add(this.PanelTurno);
             this.Controls.Add(this.DgvTurno);
             this.Controls.Add(this.panel2);
@@ -785,9 +786,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView DgvTurno;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox tbxBuscar;
         private System.Windows.Forms.Panel PanelRegistro;
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Label lblTelefono;
@@ -839,5 +837,8 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.DataGridView dgvMed;
         private System.Windows.Forms.Button btnHistoriaClinica;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox tbxBuscar;
     }
 }

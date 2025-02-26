@@ -589,13 +589,27 @@ namespace Capa_Presentacion
 
         }
 
+        private void tbxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            PacienteNegocio pacienteNegocio = new PacienteNegocio();
+            List<Capa_Dominio.Paciente> lista = pacienteNegocio.listar();
+            List<Capa_Dominio.Paciente> listaFiltrada;
+            string filtro = tbxBuscar.Text.ToUpper(); // Convertir el filtro a mayúsculas una vez
 
+            if (filtro.Length >= 1)
+            {
+                listaFiltrada = lista.FindAll(x =>
+                    x.Nombre.ToUpper().Contains(filtro) || x.Direccion.ToString().Contains(filtro)
+                    || x.Dni.ToString().Contains(filtro) ); // Filtrar por nombre que contiene el filtro
+                
+            }
+            else
+            {
+                listaFiltrada = lista;
+            }
 
-
-
-
-
-
+            DgvTurno.DataSource = listaFiltrada;
+        }
     }
 
 }

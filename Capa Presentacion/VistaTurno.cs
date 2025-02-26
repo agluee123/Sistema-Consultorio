@@ -67,7 +67,8 @@ namespace Capa_Presentacion
             maskedTextBox1.Mask = "00:00";  // Formato HH:mm
             maskedTextBox1.ValidatingType = typeof(DateTime);
             ListarMedico();
-
+            
+           
         }
 
         public static void DiseñoDgv(ref DataGridView dgv)
@@ -325,6 +326,27 @@ namespace Capa_Presentacion
                 MessageBox.Show($"Error al actualizar el turno: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        public void DeshabilitarBotones(string rol)
+        {
+            if (rol == "Medico")
+            {
+                dgvMed.Enabled= false;
+                maskedTextBox1.Enabled = false;
+                tbxConsulta.Enabled = false;
+                dtpFecha.Enabled = false;
+
+
+                dgvTurno.Columns["Eliminar"].Visible = false;
+
+                    
+
+            }
+
+
+        }
+
 
 
 

@@ -79,6 +79,7 @@ namespace Capa_Presentacion
                     pacienteControl.DeshabilitarBotones(rolUsuario); // Llamamos al método del UserControl
                 }
             }
+
         }
 
 
@@ -109,6 +110,7 @@ namespace Capa_Presentacion
             VistaTurno control = new VistaTurno();
             control.Dock = DockStyle.Fill;
             panelPadre.Controls.Add(control);
+            control.DeshabilitarBotones(rolUsuario);
 
         }
 
